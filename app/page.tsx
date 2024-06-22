@@ -1,113 +1,192 @@
-import Image from "next/image";
+"use client";
+
+import React, { useState, useEffect } from "react";
+import Button from "@/app/components/Button";
+import PlantWithToolTip from "@/app/components/PlantWithToolTip";
+import { plantData as initialPlantData, PlantData } from "@/data/plantData";
+import { plants } from "@/constants/plantDatabase";
+import { getMaxCols } from "@/utils/utilities";
 
 export default function Home() {
+  const [isEditing, setIsEditing] = useState(false);
+  const [isSorted, setIsSorted] = useState(false);
+  const [plantData, setPlantData] = useState<PlantData>(initialPlantData);
+  const [originalPlantData, setOriginalPlantData] = useState<PlantData>(initialPlantData);
+
+  const handleUpdatePlantData = (
+    sectionIndex: number,
+    rowIndex: number,
+    plantIndex: number,
+    newPlantId: number,
+    newDate: string,
+    newCuttingType: string
+  ) => {
+    const sectionKey = `section${sectionIndex}`;
+    const updatedPlantData = { ...plantData };
+    if (updatedPlantData[sectionKey]) {
+      updatedPlantData[sectionKey][rowIndex][plantIndex].plantId = newPlantId;
+      updatedPlantData[sectionKey][rowIndex][plantIndex].startDate = newDate;
+      updatedPlantData[sectionKey][rowIndex][plantIndex].cutType = newCuttingType;
+      setPlantData(updatedPlantData);
+    }
+  };
+
+  const saveUpdatedPlantData = async (updatedData: PlantData) => {
+    try {
+      const response = await fetch("/api/savePlantData", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to save plant data");
+      }
+
+      const data = await response.json();
+      console.log("Plant data saved successfully:", data);
+    } catch (error) {
+      console.error("Error saving plant data:", error);
+    }
+  };
+
+  useEffect(() => {
+    if (!isEditing) {
+      saveUpdatedPlantData(plantData);
+    }
+  }, [isEditing]);
+
+  const sortPlantData = () => {
+    const allPlants = Object.values(plantData).flat(2);
+    const sortedPlants = allPlants.sort((a, b) => {
+      if (a.plantId === 0) return 1;
+      if (b.plantId === 0) return -1;
+      const plantA = plants.find((p) => p.id === a.plantId);
+      const plantB = plants.find((p) => p.id === b.plantId);
+      return (plantA?.reading || "").localeCompare(plantB?.reading || "", "ja");
+    });
+
+    const sortedData: PlantData = {};
+    let index = 0;
+
+    for (const [sectionKey, sectionData] of Object.entries(plantData)) {
+        const maxCols = getMaxCols(sectionData);
+        const newSectionData = [];
+
+      for (let rowIndex = 0; rowIndex < sectionData.length; rowIndex++) {
+        const newRow = sortedPlants.slice(index, index + maxCols);
+        newSectionData.push(newRow);
+        index += maxCols;
+      }
+
+      sortedData[sectionKey] = newSectionData;
+    }
+
+    setPlantData(sortedData);
+  };
+
+  const handleSortButtonClick = () => {
+    if (isSorted) {
+      setPlantData(originalPlantData);
+    } else {
+      setOriginalPlantData(plantData);
+      sortPlantData();
+    }
+    setIsSorted(!isSorted);
+  };
+
+  const createNewSection = () => {
+    const newSection = Array.from({ length: 4 }, () =>
+      Array.from({ length: 6 }, () => ({
+        plantId: 0,
+        startDate: "",
+        cutType: ""
+      }))
+    );
+    return newSection;
+  };
+
+  const handleAddSection = () => {
+    const newSectionKey = `section${Object.keys(plantData).length + 1}`;
+    setPlantData({
+      ...plantData,
+      [newSectionKey]: createNewSection(),
+    });
+  };
+
+  useEffect(() => {
+    if (!isEditing) {
+      saveUpdatedPlantData(plantData);
+    }
+  }, [isEditing]);
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+    <>
+      <main className="bg-[#FBE3DE] flex justify-center">
+        <div className="py-clamp-20vh max-w-[768px] w-full px-clamp-5vw">
+          <div className="flex justify-end space-x-4">
+            <Button
+              bgColor="#fdf2a0"
+              defaultText="編集する"
+              changedText="更新する"
+              isActive={isEditing}
+              onClick={() => setIsEditing(!isEditing)}
             />
-          </a>
+            <Button
+              bgColor="#add8e6"
+              defaultText="並べ替え"
+              changedText="並べ替え中"
+              isActive={isSorted}
+              onClick={handleSortButtonClick}
+            />
+            <Button
+              bgColor="#90EE90"
+              defaultText="プランターを追加"
+              changedText="追加中"
+              isActive={false}
+              onClick={handleAddSection}
+            />
+          </div>
+          {plantData &&
+            Object.entries(plantData).map(
+              ([sectionName, sectionData], sectionIndex) => (
+                <div
+                  key={sectionName}
+                  className="border-black border-2 w-full grid gap-clamp-1vw p-clamp-0.5vw mt-clamp-4vh"
+                  style={{
+                    gridTemplateColumns: `repeat(${getMaxCols(
+                      sectionData
+                    )}, minmax(0, 1fr))`,
+                  }}
+                >
+                  {sectionData.map((row, rowIndex) =>
+                    row.map((plant, plantIndex) => (
+                      <PlantWithToolTip
+                        key={`${sectionIndex}-${rowIndex}-${plantIndex}`}
+                        plantId={plant.plantId}
+                        plantDate={plant.startDate || ""}
+                        cuttingType={plant.cutType || ""}
+                        isEditing={isEditing}
+                        onUpdate={(newPlantId, newDate, newCuttingType) =>
+                          handleUpdatePlantData(
+                            sectionIndex + 1,
+                            rowIndex,
+                            plantIndex,
+                            newPlantId,
+                            newDate,
+                            newCuttingType
+                          )
+                        }
+                      />
+                    ))
+                  )}
+                </div>
+              )
+            )}
         </div>
-      </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+      </main>
+    </>
   );
 }
