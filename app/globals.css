@@ -35,3 +35,7 @@ body {
 .tooltip-container:hover .tooltip-content {
   display: block;
 }
+
+.bg-soil {
+  background-image: url('/assets/images/succulent/soil.png');
+}

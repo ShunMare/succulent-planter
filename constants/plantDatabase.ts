@@ -746,7 +746,7 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [],
-    reading: ""
+    reading: "ダークムーン"
   },
   {
     id: 67,

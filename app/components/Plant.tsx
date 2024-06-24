@@ -17,7 +17,7 @@ const Plant: React.FC<PlantProps> = ({
 }) => {
   return (
     <div
-      className={`relative rounded-full border-black border-2 aspect-square bg-cover bg-[url('/assets/images/succulent/soil.png')] ${className}`}
+      className={`relative rounded-full border-black border-2 aspect-square bg-cover bg-soil ${className}`}
     >
       <div className="w-full brightness-105 contrast-125">
         {imgSrc && <img src={imgSrc} alt={alt} />}
