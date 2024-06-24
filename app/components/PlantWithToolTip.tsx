@@ -2,30 +2,33 @@ import React, { useState } from "react";
 import { plants } from "@/constants/plantDatabase";
 import Plant from "@/app/components/Plant";
 import ToolTip from "@/app/components/ToolTip";
-import Modal from "@/app/components/Modal";
+import EditPlantModal from "@/app/components/EditPlantModal";
 
 interface PlantWithToolTipProps {
   plantId: number;
   plantDate: string;
   cuttingType: string;
+  hasLabel: boolean;
   isEditing: boolean;
-  onUpdate: (newPlantId: number, newDate: string, newCuttingType: string) => void;
+  onUpdate: (
+    newPlantId: number,
+    newDate: string,
+    newCuttingType: string,
+    newHasLabel: boolean
+  ) => void;
 }
 
 const PlantWithToolTip: React.FC<PlantWithToolTipProps> = ({
   plantId,
   plantDate,
   cuttingType,
+  hasLabel,
   isEditing,
   onUpdate,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedPlantId, setSelectedPlantId] = useState(plantId);
-  const [selectedDate, setSelectedDate] = useState<string>(plantDate || "");
-  const [selectedCuttingType, setSelectedCuttingType] = useState<string>(cuttingType || "");
 
   const plant = plants.find((p) => p.id === plantId);
-  const selectedPlant = plants.find((p) => p.id === selectedPlantId);
 
   if (!plant) return null;
 
@@ -37,7 +40,8 @@ const PlantWithToolTip: React.FC<PlantWithToolTipProps> = ({
     return `${year}.${month}.${day}`;
   };
 
-  const imgSrc = plantId !== 0 ? `/assets/images/succulent/${plant.fileName}.png` : "";
+  const imgSrc =
+    plantId !== 0 ? `/assets/images/succulent/${plant.fileName}.png` : "";
   const altText = plantId !== 0 ? plant.name : "";
 
   const handlePlantClick = () => {
@@ -46,13 +50,18 @@ const PlantWithToolTip: React.FC<PlantWithToolTipProps> = ({
     }
   };
 
-  const handleUpdateClick = () => {
-    onUpdate(selectedPlantId, selectedDate, selectedCuttingType);
+  const handleUpdate = (
+    newPlantId: number,
+    newDate: string,
+    newCuttingType: string,
+    newHasLabel: boolean
+  ) => {
+    onUpdate(newPlantId, newDate, newCuttingType, newHasLabel);
     setIsModalOpen(false);
   };
 
   return (
-    <div className="relative font-primaryBold">
+    <div className="relative font-primaryBold flex justify-center">
       {plantId !== 0 && !isEditing ? (
         <ToolTip
           name={plant.name}
@@ -62,65 +71,39 @@ const PlantWithToolTip: React.FC<PlantWithToolTipProps> = ({
           cutType={cuttingType}
           startDate={plantDate ? formatDate(plantDate) : ""}
           notes={plant.notes}
+          relatedId={plant.relatedId}
           imgSrc={imgSrc}
           alt={altText}
         >
           <Plant
+            className="w-clamp-12vw"
             imgSrc={imgSrc}
             alt={altText}
             isEditing={isEditing}
+            hasLabel={hasLabel}
           />
         </ToolTip>
       ) : (
         <div onClick={handlePlantClick}>
           <Plant
+            className="w-clamp-12vw"
             imgSrc={imgSrc}
             alt={altText}
             isEditing={isEditing}
+            hasLabel={hasLabel}
           />
         </div>
       )}
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        <h2 className="text-clamp-2.5vw">編集モード</h2>
-        <select
-          value={selectedPlantId}
-          onChange={(e) => setSelectedPlantId(Number(e.target.value))}
-          className="mt-clamp-2vw p-clamp-1vw border rounded-clamp-1vw"
-        >
-          {plants.map((p) => (
-            <option key={p.id} value={p.id}>
-              {p.name}
-            </option>
-          ))}
-        </select>
-        <div>
-          <select
-            value={selectedCuttingType}
-            onChange={(e) => setSelectedCuttingType(e.target.value)}
-            className="mt-clamp-2vw p-clamp-1vw mr-clamp-2vw border rounded-clamp-1vw"
-          >
-            <option value="">選択してください</option>
-            <option value="胴切り">胴切り</option>
-            <option value="枝切り">枝切り</option>
-          </select>
-          <input
-            type="date"
-            value={selectedDate}
-            onChange={(e) => setSelectedDate(e.target.value)}
-            className="mt-clamp-2vw p-clamp-1vw border rounded-clamp-1vw"
-          />
-        </div>
-        {selectedPlant && (
-          <div className="flex justify-end mt-clamp-4vw">
-            <button
-              onClick={handleUpdateClick}
-              className="bg-blue-500 text-white px-4 py-2 rounded-clamp-1vw mt-clamp-2vw"
-            >
-              更新する
-            </button>
-          </div>
-        )}
-      </Modal>
+      {isModalOpen && (
+        <EditPlantModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          plants={plants}
+          targetPlantId={plantId}
+          initialHasLabel={hasLabel}
+          onUpdate={handleUpdate}
+        />
+      )}
     </div>
   );
 };

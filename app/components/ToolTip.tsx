@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from "react";
+import { plants } from "@/constants/plantDatabase";
 
 interface Props {
   name: string;
@@ -10,6 +11,7 @@ interface Props {
   notes: string;
   imgSrc: string;
   alt: string;
+  relatedId: number[];
   children: React.ReactNode;
 }
 
@@ -23,9 +25,12 @@ const ToolTip: React.FC<Props> = ({
   notes,
   imgSrc,
   alt,
+  relatedId,
   children,
 }) => {
-  const [position, setPosition] = useState<'top' | 'bottom' | 'left' | 'right'>('top');
+  const [position, setPosition] = useState<"top" | "bottom" | "left" | "right">(
+    "top"
+  );
   const tooltipRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -35,15 +40,21 @@ const ToolTip: React.FC<Props> = ({
       const containerRect = containerRef.current.getBoundingClientRect();
 
       if (containerRect.top - tooltipRect.height > 0) {
-        setPosition('top');
-      } else if (window.innerHeight - containerRect.bottom - tooltipRect.height > 0) {
-        setPosition('bottom');
+        setPosition("top");
+      } else if (
+        window.innerHeight - containerRect.bottom - tooltipRect.height >
+        0
+      ) {
+        setPosition("bottom");
       } else if (containerRect.left - tooltipRect.width > 0) {
-        setPosition('left');
-      } else if (window.innerWidth - containerRect.right - tooltipRect.width > 0) {
-        setPosition('right');
+        setPosition("left");
+      } else if (
+        window.innerWidth - containerRect.right - tooltipRect.width >
+        0
+      ) {
+        setPosition("right");
       } else {
-        setPosition('top');
+        setPosition("top");
       }
     }
   };
@@ -51,6 +62,10 @@ const ToolTip: React.FC<Props> = ({
   useEffect(() => {
     handleMouseEnter();
   }, []);
+
+  const relatedNames = relatedId
+    .map((id) => plants.find((plant) => plant.id === id)?.name)
+    .filter((name): name is string => !!name);
 
   return (
     <div
@@ -62,17 +77,32 @@ const ToolTip: React.FC<Props> = ({
       <div
         ref={tooltipRef}
         className={`font-primaryBold tooltip-content absolute z-50 ${
-          position === 'top'
-            ? 'bottom-full mb-clamp-2vw left-1/2 transform -translate-x-1/2'
-            : position === 'bottom'
-            ? 'top-full mt-clamp-2vw left-1/2 transform -translate-x-1/2'
-            : position === 'left'
-            ? 'right-full mr-clamp-2vw top-1/2 transform -translate-y-1/2'
-            : 'left-full ml-clamp-2vw top-1/2 transform -translate-y-1/2'
+          position === "top"
+            ? "bottom-full mb-clamp-2vw left-1/2 transform -translate-x-1/2"
+            : position === "bottom"
+            ? "top-full mt-clamp-2vw left-1/2 transform -translate-x-1/2"
+            : position === "left"
+            ? "right-full mr-clamp-2vw top-1/2 transform -translate-y-1/2"
+            : "left-full ml-clamp-2vw top-1/2 transform -translate-y-1/2"
         } rounded-clamp-2vw w-clamp-40vw bg-white text-clamp-2vw py-clamp-2vh px-clamp-2vw hidden`}
       >
         <p className="text-clamp-3vw">{name}</p>
         <p className="text-clamp-2vw">{scientificName}</p>
+        {relatedNames.length > 0 && (
+          <div className="mt-clamp-1vh flex flex-wrap text-clamp-1.8vw">
+            <p className="font-bold whitespace-nowrap mr-clamp-1vw">別名:</p>
+            <ul className="flex flex-wrap list-none p-0 m-0">
+              {relatedNames.map((relatedName) => (
+                <li
+                  className="mr-clamp-0.5vw whitespace-nowrap"
+                  key={relatedName}
+                >
+                  {relatedName}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
         <div className="rounded-clamp-1vw overflow-hidden my-clamp-1vh">
           <img className="w-full" src={imgSrc} alt={alt} />
         </div>
@@ -82,7 +112,7 @@ const ToolTip: React.FC<Props> = ({
         <p className="text-clamp-1.5vw text-end mt-clamp-1vh">
           {cutType} {startDate}
         </p>
-        <p className="mt-clamp-1vh">{notes}</p>
+        <p className="mt-clamp-1vh text-clamp-1.8vw">{notes}</p>
       </div>
     </div>
   );

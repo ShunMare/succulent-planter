@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from "react";
 import Button from "@/app/components/Button";
 import PlantWithToolTip from "@/app/components/PlantWithToolTip";
+import Modal from "@/app/components/Modal";
+import SectionSizeSelector from "@/app/components/SectionSizeSelector";
 import { plantData as initialPlantData, PlantData } from "@/data/plantData";
 import { plants } from "@/constants/plantDatabase";
 import { getMaxCols } from "@/utils/utilities";
@@ -11,7 +13,11 @@ export default function Home() {
   const [isEditing, setIsEditing] = useState(false);
   const [isSorted, setIsSorted] = useState(false);
   const [plantData, setPlantData] = useState<PlantData>(initialPlantData);
-  const [originalPlantData, setOriginalPlantData] = useState<PlantData>(initialPlantData);
+  const [originalPlantData, setOriginalPlantData] =
+    useState<PlantData>(initialPlantData);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [rows, setRows] = useState(4);
+  const [cols, setCols] = useState(6);
 
   const handleUpdatePlantData = (
     sectionIndex: number,
@@ -19,7 +25,8 @@ export default function Home() {
     plantIndex: number,
     newPlantId: number,
     newDate: string,
-    newCuttingType: string
+    newCuttingType: string,
+    newHasLabel: boolean
   ) => {
     const sectionKey = `section${sectionIndex}`;
     const updatedPlantData = { ...plantData };
@@ -27,6 +34,7 @@ export default function Home() {
       updatedPlantData[sectionKey][rowIndex][plantIndex].plantId = newPlantId;
       updatedPlantData[sectionKey][rowIndex][plantIndex].startDate = newDate;
       updatedPlantData[sectionKey][rowIndex][plantIndex].cutType = newCuttingType;
+      updatedPlantData[sectionKey][rowIndex][plantIndex].hasLabel = newHasLabel;
       setPlantData(updatedPlantData);
     }
   };
@@ -72,8 +80,8 @@ export default function Home() {
     let index = 0;
 
     for (const [sectionKey, sectionData] of Object.entries(plantData)) {
-        const maxCols = getMaxCols(sectionData);
-        const newSectionData = [];
+      const maxCols = getMaxCols(sectionData);
+      const newSectionData = [];
 
       for (let rowIndex = 0; rowIndex < sectionData.length; rowIndex++) {
         const newRow = sortedPlants.slice(index, index + maxCols);
@@ -97,12 +105,13 @@ export default function Home() {
     setIsSorted(!isSorted);
   };
 
-  const createNewSection = () => {
-    const newSection = Array.from({ length: 4 }, () =>
-      Array.from({ length: 6 }, () => ({
+  const createNewSection = (rows: number, cols: number) => {
+    const newSection = Array.from({ length: rows }, () =>
+      Array.from({ length: cols }, () => ({
         plantId: 0,
         startDate: "",
-        cutType: ""
+        cutType: "",
+        hasLabel: false,
       }))
     );
     return newSection;
@@ -112,15 +121,10 @@ export default function Home() {
     const newSectionKey = `section${Object.keys(plantData).length + 1}`;
     setPlantData({
       ...plantData,
-      [newSectionKey]: createNewSection(),
+      [newSectionKey]: createNewSection(rows, cols),
     });
+    setIsModalOpen(false);
   };
-
-  useEffect(() => {
-    if (!isEditing) {
-      saveUpdatedPlantData(plantData);
-    }
-  }, [isEditing]);
 
   return (
     <>
@@ -146,7 +150,7 @@ export default function Home() {
               defaultText="プランターを追加"
               changedText="追加中"
               isActive={false}
-              onClick={handleAddSection}
+              onClick={() => setIsModalOpen(true)}
             />
           </div>
           {plantData &&
@@ -154,39 +158,60 @@ export default function Home() {
               ([sectionName, sectionData], sectionIndex) => (
                 <div
                   key={sectionName}
-                  className="border-black border-2 w-full grid gap-clamp-1vw p-clamp-0.5vw mt-clamp-4vh"
-                  style={{
-                    gridTemplateColumns: `repeat(${getMaxCols(
-                      sectionData
-                    )}, minmax(0, 1fr))`,
-                  }}
+                  className="flex justify-center mt-clamp-4vh"
                 >
-                  {sectionData.map((row, rowIndex) =>
-                    row.map((plant, plantIndex) => (
-                      <PlantWithToolTip
-                        key={`${sectionIndex}-${rowIndex}-${plantIndex}`}
-                        plantId={plant.plantId}
-                        plantDate={plant.startDate || ""}
-                        cuttingType={plant.cutType || ""}
-                        isEditing={isEditing}
-                        onUpdate={(newPlantId, newDate, newCuttingType) =>
-                          handleUpdatePlantData(
-                            sectionIndex + 1,
-                            rowIndex,
-                            plantIndex,
+                  <div
+                    className="border-black border-2 grid gap-clamp-1vw p-clamp-0.5vw"
+                    style={{
+                      gridTemplateColumns: `repeat(${getMaxCols(
+                        sectionData
+                      )}, minmax(0, 1fr))`,
+                    }}
+                  >
+                    {sectionData.map((row, rowIndex) =>
+                      row.map((plant, plantIndex) => (
+                        <PlantWithToolTip
+                          key={`${sectionIndex}-${rowIndex}-${plantIndex}`}
+                          plantId={plant.plantId}
+                          plantDate={plant.startDate || ""}
+                          cuttingType={plant.cutType || ""}
+                          hasLabel={plant.hasLabel || false}
+                          isEditing={isEditing}
+                          onUpdate={(
                             newPlantId,
                             newDate,
-                            newCuttingType
-                          )
-                        }
-                      />
-                    ))
-                  )}
+                            newCuttingType,
+                            newHasLabel
+                          ) =>
+                            handleUpdatePlantData(
+                              sectionIndex + 1,
+                              rowIndex,
+                              plantIndex,
+                              newPlantId,
+                              newDate,
+                              newCuttingType,
+                              newHasLabel
+                            )
+                          }
+                        />
+                      ))
+                    )}
+                  </div>
                 </div>
               )
             )}
         </div>
       </main>
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+        <SectionSizeSelector
+          rows={rows}
+          cols={cols}
+          setRows={setRows}
+          setCols={setCols}
+          onSave={handleAddSection}
+          onCancel={() => setIsModalOpen(false)}
+        />
+      </Modal>
     </>
   );
 }
