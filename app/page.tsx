@@ -49,11 +49,14 @@ export default function Home() {
     const updatedPlantData = { ...plantData };
     if (updatedPlantData[sectionKey]) {
       if (!updatedPlantData[sectionKey][rowIndex][plantIndex].uniqueId) {
-        updatedPlantData[sectionKey][rowIndex][plantIndex].uniqueId = `${sectionKey}-${rowIndex}-${plantIndex}`;
+        updatedPlantData[sectionKey][rowIndex][
+          plantIndex
+        ].uniqueId = `${sectionKey}-${rowIndex}-${plantIndex}`;
       }
       updatedPlantData[sectionKey][rowIndex][plantIndex].plantId = newPlantId;
       updatedPlantData[sectionKey][rowIndex][plantIndex].startDate = newDate;
-      updatedPlantData[sectionKey][rowIndex][plantIndex].cutType = newCuttingType;
+      updatedPlantData[sectionKey][rowIndex][plantIndex].cutType =
+        newCuttingType;
       updatedPlantData[sectionKey][rowIndex][plantIndex].hasLabel = newHasLabel;
       setPlantData(updatedPlantData);
     }
@@ -61,8 +64,6 @@ export default function Home() {
 
   const saveUpdatedPlantData = async (updatedData: any) => {
     try {
-      console.log("Updated data being sent:", updatedData);
-
       await savePlantDataToFirestore("plantCollection", updatedData);
     } catch (error) {
       if (error instanceof Error) {
@@ -81,25 +82,45 @@ export default function Home() {
 
   const sortPlantData = () => {
     const allPlants = Object.values(plantData).flat(2);
-    const sortedPlants = allPlants.sort((a, b) => {
-      if (a.plantId === 0) return 1;
-      if (b.plantId === 0) return -1;
+    const plantsWithId = allPlants.filter((plant) => plant.plantId !== 0);
+    const plantsWithoutId = allPlants.filter((plant) => plant.plantId === 0);
+    const sortedPlantsWithId = plantsWithId.sort((a, b) => {
       const plantA = plants.find((p) => p.id === a.plantId);
       const plantB = plants.find((p) => p.id === b.plantId);
       return (plantA?.reading || "").localeCompare(plantB?.reading || "", "ja");
     });
-
+    const sortedPlants = [...sortedPlantsWithId, ...plantsWithoutId];
+    sortedPlants.forEach((plant, index) => {
+      const plantInfo = plants.find((p) => p.id === plant.plantId);
+    });
     const sortedData: PlantData = {};
     let index = 0;
 
-    for (const [sectionKey, sectionData] of Object.entries(plantData)) {
+    for (const [sectionKey, sectionData] of Object.entries(plantData).sort(
+      (a, b) =>
+        Number(a[0].replace("section", "")) -
+        Number(b[0].replace("section", ""))
+    )) {
       const maxCols = getMaxCols(sectionData);
       const newSectionData = [];
 
       for (let rowIndex = 0; rowIndex < sectionData.length; rowIndex++) {
-        const newRow = sortedPlants.slice(index, index + maxCols);
+        const newRow = [];
+        for (let colIndex = 0; colIndex < maxCols; colIndex++) {
+          if (index < sortedPlants.length) {
+            newRow.push(sortedPlants[index]);
+            index++;
+          } else {
+            newRow.push({
+              plantId: 0,
+              startDate: "",
+              cutType: "",
+              hasLabel: false,
+              uniqueId: "",
+            });
+          }
+        }
         newSectionData.push(newRow);
-        index += maxCols;
       }
 
       sortedData[sectionKey] = newSectionData;
@@ -125,7 +146,7 @@ export default function Home() {
         startDate: "",
         cutType: "",
         hasLabel: false,
-        uniqueId: "", // 新しいユニークIDを生成するためのプレースホルダー
+        uniqueId: "",
       }))
     );
     return newSection;
@@ -173,50 +194,58 @@ export default function Home() {
               const bNum = parseInt(b.replace("section", ""), 10);
               return aNum - bNum;
             })
-            .map((sectionName) => (
-              <div
-                key={sectionName}
-                className="flex justify-center mt-clamp-4vh"
-              >
+            .map((sectionName) => {
+              plantData[sectionName].forEach((row, rowIndex) => {
+                row.forEach((plant, plantIndex) => {
+                  const plantInfo = plants.find((p) => p.id === plant.plantId);
+                });
+              });
+
+              return (
                 <div
-                  className="border-[#1F1F1F] border-clamp-1vw bg-black grid gap-clamp-1vw rounded-clamp-1vw p-clamp-0.5vw"
-                  style={{
-                    gridTemplateColumns: `repeat(${getMaxCols(
-                      plantData[sectionName]
-                    )}, minmax(0, 1fr))`,
-                  }}
+                  key={sectionName}
+                  className="flex justify-center mt-clamp-4vh"
                 >
-                  {plantData[sectionName].map((row, rowIndex) =>
-                    row.map((plant, plantIndex) => (
-                      <PlantWithToolTip
-                        key={`${plant.plantId}-${sectionName}-${rowIndex}-${plantIndex}`}
-                        plantId={plant.plantId}
-                        plantDate={plant.startDate || ""}
-                        cuttingType={plant.cutType || ""}
-                        hasLabel={plant.hasLabel || false}
-                        isEditing={isEditing}
-                        onUpdate={(
-                          newPlantId,
-                          newDate,
-                          newCuttingType,
-                          newHasLabel
-                        ) =>
-                          handleUpdatePlantData(
-                            parseInt(sectionName.replace("section", ""), 10),
-                            rowIndex,
-                            plantIndex,
+                  <div
+                    className="border-[#1F1F1F] border-clamp-1vw bg-black grid gap-clamp-1vw rounded-clamp-1vw p-clamp-0.5vw"
+                    style={{
+                      gridTemplateColumns: `repeat(${getMaxCols(
+                        plantData[sectionName]
+                      )}, minmax(0, 1fr))`,
+                    }}
+                  >
+                    {plantData[sectionName].map((row, rowIndex) =>
+                      row.map((plant, plantIndex) => (
+                        <PlantWithToolTip
+                          key={`${plant.plantId}-${sectionName}-${rowIndex}-${plantIndex}`}
+                          plantId={plant.plantId}
+                          plantDate={plant.startDate || ""}
+                          cuttingType={plant.cutType || ""}
+                          hasLabel={plant.hasLabel || false}
+                          isEditing={isEditing}
+                          onUpdate={(
                             newPlantId,
                             newDate,
                             newCuttingType,
                             newHasLabel
-                          )
-                        }
-                      />
-                    ))
-                  )}
+                          ) =>
+                            handleUpdatePlantData(
+                              parseInt(sectionName.replace("section", ""), 10),
+                              rowIndex,
+                              plantIndex,
+                              newPlantId,
+                              newDate,
+                              newCuttingType,
+                              newHasLabel
+                            )
+                          }
+                        />
+                      ))
+                    )}
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
         </div>
       </main>
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
