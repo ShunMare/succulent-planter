@@ -52,7 +52,7 @@ const EditPlantModal: React.FC<EditPlantModalProps> = ({
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      <h2 className="text-clamp-2.5vw">編集モード</h2>
+      <h2 className="text-clamp-3vw">編集モード</h2>
       <select
         value={selectedPlantId}
         onChange={(e) => setSelectedPlantId(Number(e.target.value))}

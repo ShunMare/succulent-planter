@@ -49,14 +49,12 @@ const ToolTip: React.FC<Props> = ({
       const windowCenter = window.innerHeight / 2;
 
       if (containerRect.left > window.innerWidth / 2) {
-        // If the element is on the right side
       if (containerCenter < windowCenter && spaceBelow > spaceAbove) {
           setPosition("bottom-left");
         } else {
           setPosition("top-left");
         }
       } else {
-        // If the element is on the left side
         if (containerCenter < windowCenter && spaceBelow > spaceAbove) {
           setPosition("bottom-right");
         } else {
@@ -93,15 +91,15 @@ const ToolTip: React.FC<Props> = ({
             : "top-full mt-clamp-2vw right-full mr-clamp-2vw"
         } rounded-clamp-2vw w-clamp-40vw bg-white text-clamp-2vw py-clamp-2vh px-clamp-2vw hidden`}
       >
-        <p className="text-clamp-3vw">{name}</p>
-        <p className="text-clamp-2vw">{scientificName}</p>
+        <p className="text-clamp-3.5vw">{name}</p>
+        <p className="text-clamp-2.5vw">{scientificName}</p>
         {relatedNames.length > 0 && (
-          <div className="mt-clamp-1vh flex flex-wrap text-clamp-1.8vw">
-            <p className="font-bold whitespace-nowrap mr-clamp-1vw">別名:</p>
+          <div className="mt-clamp-1vh flex flex-wrap text-clamp-2.3vw">
+            <p className="font-bold whitespace-nowrap mr-clamp-1.5vw">別名:</p>
             <ul className="flex flex-wrap list-none p-0 m-0">
               {relatedNames.map((relatedName) => (
                 <li
-                  className="mr-clamp-0.5vw whitespace-nowrap"
+                  className="mr-clamp-1.5vw whitespace-nowrap"
                   key={relatedName}
                 >
                   {relatedName}
@@ -113,13 +111,13 @@ const ToolTip: React.FC<Props> = ({
         <div className="rounded-clamp-1vw overflow-hidden my-clamp-1vh">
           <img className="w-full" src={imgSrc} alt={alt} />
         </div>
-        <p className="text-clamp-2vw">
+        <p className="text-clamp-2.5vw">
           {family} {genus}
         </p>
-        <p className="text-clamp-1.5vw text-end mt-clamp-1vh">
+        <p className="text-clamp-2vw text-end mt-clamp-1vh">
           {cutType} {startDate}
         </p>
-        <p className="mt-clamp-1vh text-clamp-1.8vw">{notes}</p>
+        <p className="mt-clamp-1vh text-clamp-2.3vw">{notes}</p>
       </div>
     </div>
   );
