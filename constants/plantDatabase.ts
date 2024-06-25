@@ -1026,8 +1026,8 @@ export const plants: Plant[] = [
   {
     id: 92,
     name: "サブセシリス",
-    scientificName: "Subsessilis",
-    fileName: "subsessilis",
+    scientificName: "Echeveria peacockii 'Subsessilis'",
+    fileName: "echeveria-peacockii-subsessilis",
     family: "ベンケイソウ科",
     genus: "エケベリア属",
     notes: "",
@@ -1037,8 +1037,8 @@ export const plants: Plant[] = [
   {
     id: 93,
     name: "ピーコッキー",
-    scientificName: "Subsessilis",
-    fileName: "subsessilis",
+    scientificName: "Echeveria peacockii 'Subsessilis'",
+    fileName: "echeveria-peacockii-subsessilis",
     family: "ベンケイソウ科",
     genus: "エケベリア属",
     notes: "",
@@ -1048,8 +1048,8 @@ export const plants: Plant[] = [
   {
     id: 94,
     name: "養老",
-    scientificName: "Subsessilis",
-    fileName: "subsessilis",
+    scientificName: "Echeveria peacockii 'Subsessilis'",
+    fileName: "echeveria-peacockii-subsessilis",
     family: "ベンケイソウ科",
     genus: "エケベリア属",
     notes: "",
@@ -1059,8 +1059,8 @@ export const plants: Plant[] = [
   {
     id: 95,
     name: "ピーコッキー・サブセシリス",
-    scientificName: "Subsessilis",
-    fileName: "subsessilis",
+    scientificName: "Echeveria peacockii 'Subsessilis'",
+    fileName: "echeveria-peacockii-subsessilis",
     family: "ベンケイソウ科",
     genus: "エケベリア属",
     notes: "",
@@ -1069,14 +1069,14 @@ export const plants: Plant[] = [
   },
   {
     id: 96,
-    name: "",
-    scientificName: "",
-    fileName: "",
-    family: "",
-    genus: "",
+    name: "ブルーアップル",
+    scientificName: "Echeveria 'Blue Apple'",
+    fileName: "echeveria-blue-apple",
+    family: "ベンケイソウ科",
+    genus: "エケベリア属",
     notes: "",
     relatedId: [],
-    reading: ""
+    reading: "ブルーアップル"
   },
   {
     id: 97,

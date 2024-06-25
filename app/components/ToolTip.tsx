@@ -28,9 +28,9 @@ const ToolTip: React.FC<Props> = ({
   relatedId,
   children,
 }) => {
-  const [position, setPosition] = useState<"top" | "bottom" | "left" | "right">(
-    "top"
-  );
+  const [position, setPosition] = useState<
+    "top-left" | "top-right" | "bottom-left" | "bottom-right"
+  >("top-right");
   const tooltipRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -39,22 +39,29 @@ const ToolTip: React.FC<Props> = ({
       const tooltipRect = tooltipRef.current.getBoundingClientRect();
       const containerRect = containerRef.current.getBoundingClientRect();
 
-      if (containerRect.top - tooltipRect.height > 0) {
-        setPosition("top");
-      } else if (
-        window.innerHeight - containerRect.bottom - tooltipRect.height >
-        0
-      ) {
-        setPosition("bottom");
-      } else if (containerRect.left - tooltipRect.width > 0) {
-        setPosition("left");
-      } else if (
-        window.innerWidth - containerRect.right - tooltipRect.width >
-        0
-      ) {
-        setPosition("right");
+      const spaceAbove = containerRect.top - tooltipRect.height;
+      const spaceBelow =
+        window.innerHeight - containerRect.bottom - tooltipRect.height;
+      const spaceLeft = containerRect.left - tooltipRect.width;
+      const spaceRight =
+        window.innerWidth - containerRect.right - tooltipRect.width;
+      const containerCenter = containerRect.top + containerRect.height / 2;
+      const windowCenter = window.innerHeight / 2;
+
+      if (containerRect.left > window.innerWidth / 2) {
+        // If the element is on the right side
+      if (containerCenter < windowCenter && spaceBelow > spaceAbove) {
+          setPosition("bottom-left");
+        } else {
+          setPosition("top-left");
+        }
       } else {
-        setPosition("top");
+        // If the element is on the left side
+        if (containerCenter < windowCenter && spaceBelow > spaceAbove) {
+          setPosition("bottom-right");
+        } else {
+          setPosition("top-right");
+        }
       }
     }
   };
@@ -77,13 +84,13 @@ const ToolTip: React.FC<Props> = ({
       <div
         ref={tooltipRef}
         className={`font-primaryBold tooltip-content absolute z-50 ${
-          position === "top"
-            ? "bottom-full mb-clamp-2vw left-1/2 transform -translate-x-1/2"
-            : position === "bottom"
-            ? "top-full mt-clamp-2vw left-1/2 transform -translate-x-1/2"
-            : position === "left"
-            ? "right-full mr-clamp-2vw top-1/2 transform -translate-y-1/2"
-            : "left-full ml-clamp-2vw top-1/2 transform -translate-y-1/2"
+          position === "top-right"
+            ? "bottom-full mb-clamp-2vw left-full ml-clamp-2vw"
+            : position === "bottom-right"
+            ? "top-full mt-clamp-2vw left-full ml-clamp-2vw"
+            : position === "top-left"
+            ? "bottom-full mb-clamp-2vw right-full mr-clamp-2vw"
+            : "top-full mt-clamp-2vw right-full mr-clamp-2vw"
         } rounded-clamp-2vw w-clamp-40vw bg-white text-clamp-2vw py-clamp-2vh px-clamp-2vw hidden`}
       >
         <p className="text-clamp-3vw">{name}</p>
