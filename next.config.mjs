@@ -10,7 +10,7 @@ const nextConfig = {
     MESSAGING_SEND_ID: process.env.MESSAGING_SEND_ID,
     APP_ID: process.env.APP_ID,
     MEASUREMENT_ID: process.env.MEASUREMENT_ID,
-    NEXT_PUBLIC_DATA_SOURCE: process.env.NEXT_PUBLIC_DATA_SOURCE,
+    USE_LOCAL_DATA: process.env.USE_LOCAL_DATA,
   },
 };
 

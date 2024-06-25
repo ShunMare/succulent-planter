@@ -12,6 +12,7 @@ import {
   savePlantDataToFirestore,
   fetchPlantDataFromFirestore,
 } from "@/libs/firestore/firestoreOperations";
+import { plantData as localPlantData } from "@/data/plantData";
 import { db, auth, login } from "@/libs/firestore/firebase";
 
 export default function Home() {
@@ -24,16 +25,23 @@ export default function Home() {
   const [cols, setCols] = useState(6);
 
   useEffect(() => {
-    const authenticateAndFetchData = async () => {
-      await login();
-      const fetchedPlantData = await fetchPlantDataFromFirestore(
-        "plantCollection"
-      );
-      setPlantData(fetchedPlantData);
-      setOriginalPlantData(fetchedPlantData);
+    const useLocalData = process.env.USE_LOCAL_DATA === "true";
+
+    const fetchData = async () => {
+      if (!useLocalData) {
+        await login();
+        const fetchedPlantData = await fetchPlantDataFromFirestore(
+          "plantCollection"
+        );
+        setPlantData(fetchedPlantData);
+        setOriginalPlantData(fetchedPlantData);
+      } else {
+        setPlantData(localPlantData);
+        setOriginalPlantData(localPlantData);
+      }
     };
 
-    authenticateAndFetchData();
+    fetchData();
   }, []);
 
   const handleUpdatePlantData = (
@@ -48,16 +56,14 @@ export default function Home() {
     const sectionKey = `section${sectionIndex}`;
     const updatedPlantData = { ...plantData };
     if (updatedPlantData[sectionKey]) {
-      if (!updatedPlantData[sectionKey][rowIndex][plantIndex].uniqueId) {
-        updatedPlantData[sectionKey][rowIndex][
-          plantIndex
-        ].uniqueId = `${sectionKey}-${rowIndex}-${plantIndex}`;
+      const plantToUpdate = updatedPlantData[sectionKey][rowIndex][plantIndex];
+      if (!plantToUpdate.uniqueId) {
+        plantToUpdate.uniqueId = `${sectionKey}-${rowIndex}-${plantIndex}`;
       }
-      updatedPlantData[sectionKey][rowIndex][plantIndex].plantId = newPlantId;
-      updatedPlantData[sectionKey][rowIndex][plantIndex].startDate = newDate;
-      updatedPlantData[sectionKey][rowIndex][plantIndex].cutType =
-        newCuttingType;
-      updatedPlantData[sectionKey][rowIndex][plantIndex].hasLabel = newHasLabel;
+      plantToUpdate.plantId = newPlantId;
+      plantToUpdate.startDate = newDate;
+      plantToUpdate.cutType = newCuttingType;
+      plantToUpdate.hasLabel = newHasLabel;
       setPlantData(updatedPlantData);
     }
   };

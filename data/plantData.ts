@@ -3,7 +3,7 @@ export interface PlantSection {
   cutType?: string;
   startDate?: string;
   hasLabel?: boolean;
-  uniqueId?: string; // 追加
+  uniqueId?: string;
 }
 
 export interface PlantData {
