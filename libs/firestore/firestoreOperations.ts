@@ -137,7 +137,6 @@ const flattenPlantData = (plantData: any) => {
           rowIndex,
           plantIndex,
           ...plant,
-          uniqueId: plant.uniqueId || `${section}-${rowIndex}-${plantIndex}`,
         });
       });
     });
@@ -150,12 +149,15 @@ export const savePlantDataToFirestore = async (collectionName: string, data: any
     const flatData = flattenPlantData(data);
 
     for (const item of flatData) {
-      const docRef = item.uniqueId ? doc(collection(db, collectionName), item.uniqueId) : doc(collection(db, collectionName));
-      if (item.uniqueId) {
+      const docRef = item.id ? doc(collection(db, collectionName), item.id) : doc(collection(db, collectionName));
+      if (item.id) {
+        // ドキュメントが存在する場合、更新する
         await setDoc(docRef, item, { merge: true });
+        console.log("Document updated with ID: ", docRef.id);
       } else {
+        // ドキュメントが存在しない場合、新規作成する
         await addDoc(collection(db, collectionName), item);
-        console.log("Document written with new uniqueId: ", item.uniqueId);
+        console.log("Document written with ID: ", docRef.id);
       }
     }
   } catch (error) {
