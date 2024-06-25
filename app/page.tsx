@@ -179,7 +179,7 @@ export default function Home() {
                 className="flex justify-center mt-clamp-4vh"
               >
                 <div
-                  className="border-black border-2 grid gap-clamp-1vw p-clamp-0.5vw"
+                  className="border-[#1F1F1F] border-clamp-1vw bg-black grid gap-clamp-1vw rounded-clamp-1vw p-clamp-0.5vw"
                   style={{
                     gridTemplateColumns: `repeat(${getMaxCols(
                       plantData[sectionName]

@@ -17,10 +17,10 @@ const Plant: React.FC<PlantProps> = ({
 }) => {
   return (
     <div
-      className={`relative rounded-full border-black border-2 aspect-square bg-cover bg-soil ${className}`}
+      className={`relative rounded-clamp-2vw border-[#393939] border-2 aspect-square bg-cover bg-soil ${className}`}
     >
-      <div className="w-full brightness-105 contrast-125">
-        {imgSrc && <img src={imgSrc} alt={alt} />}
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] brightness-105 contrast-125">
+        {imgSrc && <img className="w-full" src={imgSrc} alt={alt} />}
       </div>
       {isEditing && (
         <div className="absolute top-0 left-0 aspect-square rounded-full w-full bg-black z-10 bg-opacity-50">
