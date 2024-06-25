@@ -1031,7 +1031,7 @@ export const plants: Plant[] = [
     family: "ベンケイソウ科",
     genus: "エケベリア属",
     notes: "",
-    relatedId: [93, 94, 95, 96],
+    relatedId: [93, 94, 95],
     reading: "サブセシリス"
   },
   {
@@ -1042,7 +1042,7 @@ export const plants: Plant[] = [
     family: "ベンケイソウ科",
     genus: "エケベリア属",
     notes: "",
-    relatedId: [92, 94, 95, 96],
+    relatedId: [92, 94, 95],
     reading: "ピーコッキー"
   },
   {
@@ -1053,7 +1053,7 @@ export const plants: Plant[] = [
     family: "ベンケイソウ科",
     genus: "エケベリア属",
     notes: "",
-    relatedId: [92, 93, 95, 96],
+    relatedId: [92, 93, 95],
     reading: "ヨウロウ"
   },
   {
@@ -1064,19 +1064,19 @@ export const plants: Plant[] = [
     family: "ベンケイソウ科",
     genus: "エケベリア属",
     notes: "",
-    relatedId: [92, 93, 94, 96],
+    relatedId: [92, 93, 94],
     reading: "ピーコッキー・サブセシリス"
   },
   {
     id: 96,
-    name: "ピーコッキー",
-    scientificName: "Subsessilis",
-    fileName: "subsessilis",
-    family: "ベンケイソウ科",
-    genus: "エケベリア属",
+    name: "",
+    scientificName: "",
+    fileName: "",
+    family: "",
+    genus: "",
     notes: "",
-    relatedId: [92, 93, 94, 95],
-    reading: "ピーコッキー"
+    relatedId: [],
+    reading: ""
   },
   {
     id: 97,
@@ -2307,19 +2307,19 @@ export const plants: Plant[] = [
     family: "ベンケイソウ科",
     genus: "セデベリア属",
     notes: "",
-    relatedId: [207, 209],
+    relatedId: [],
     reading: "ソフトライム"
   },
   {
     id: 209,
-    name: "ソフトライム",
-    scientificName: "Sedeveria 'Soft Rime'",
-    fileName: "sedeveria-soft-rime",
-    family: "ベンケイソウ科",
-    genus: "セデベリア属",
+    name: "",
+    scientificName: "",
+    fileName: "",
+    family: "",
+    genus: "",
     notes: "",
-    relatedId: [207, 208],
-    reading: "ソフトライム"
+    relatedId: [],
+    reading: ""
   },
   {
     id: 210,

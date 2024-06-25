@@ -5,19 +5,36 @@ import Button from "@/app/components/Button";
 import PlantWithToolTip from "@/app/components/PlantWithToolTip";
 import Modal from "@/app/components/Modal";
 import SectionSizeSelector from "@/app/components/SectionSizeSelector";
-import { plantData as initialPlantData, PlantData } from "@/data/plantData";
+import { PlantData } from "@/data/plantData";
 import { plants } from "@/constants/plantDatabase";
 import { getMaxCols } from "@/utils/utilities";
+import {
+  savePlantDataToFirestore,
+  fetchPlantDataFromFirestore,
+} from "@/libs/firestore/firestoreOperations";
+import { db, auth, login } from "@/libs/firestore/firebase";
 
 export default function Home() {
   const [isEditing, setIsEditing] = useState(false);
   const [isSorted, setIsSorted] = useState(false);
-  const [plantData, setPlantData] = useState<PlantData>(initialPlantData);
-  const [originalPlantData, setOriginalPlantData] =
-    useState<PlantData>(initialPlantData);
+  const [plantData, setPlantData] = useState<PlantData>({});
+  const [originalPlantData, setOriginalPlantData] = useState<PlantData>({});
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [rows, setRows] = useState(4);
   const [cols, setCols] = useState(6);
+
+  useEffect(() => {
+    const authenticateAndFetchData = async () => {
+      await login();
+      const fetchedPlantData = await fetchPlantDataFromFirestore(
+        "plantCollection"
+      );
+      setPlantData(fetchedPlantData);
+      setOriginalPlantData(fetchedPlantData);
+    };
+
+    authenticateAndFetchData();
+  }, []);
 
   const handleUpdatePlantData = (
     sectionIndex: number,
@@ -31,6 +48,9 @@ export default function Home() {
     const sectionKey = `section${sectionIndex}`;
     const updatedPlantData = { ...plantData };
     if (updatedPlantData[sectionKey]) {
+      if (!updatedPlantData[sectionKey][rowIndex][plantIndex].uniqueId) {
+        updatedPlantData[sectionKey][rowIndex][plantIndex].uniqueId = `${sectionKey}-${rowIndex}-${plantIndex}`;
+      }
       updatedPlantData[sectionKey][rowIndex][plantIndex].plantId = newPlantId;
       updatedPlantData[sectionKey][rowIndex][plantIndex].startDate = newDate;
       updatedPlantData[sectionKey][rowIndex][plantIndex].cutType = newCuttingType;
@@ -39,24 +59,17 @@ export default function Home() {
     }
   };
 
-  const saveUpdatedPlantData = async (updatedData: PlantData) => {
+  const saveUpdatedPlantData = async (updatedData: any) => {
     try {
-      const response = await fetch("/api/savePlantData", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(updatedData),
-      });
+      console.log("Updated data being sent:", updatedData);
 
-      if (!response.ok) {
-        throw new Error("Failed to save plant data");
-      }
-
-      const data = await response.json();
-      console.log("Plant data saved successfully:", data);
+      await savePlantDataToFirestore("plantCollection", updatedData);
     } catch (error) {
-      console.error("Error saving plant data:", error);
+      if (error instanceof Error) {
+        console.error("Error saving plant data:", error.message);
+      } else {
+        console.error("Unexpected error saving plant data:", error);
+      }
     }
   };
 
@@ -112,6 +125,7 @@ export default function Home() {
         startDate: "",
         cutType: "",
         hasLabel: false,
+        uniqueId: "", // 新しいユニークIDを生成するためのプレースホルダー
       }))
     );
     return newSection;
@@ -153,53 +167,56 @@ export default function Home() {
               onClick={() => setIsModalOpen(true)}
             />
           </div>
-          {plantData &&
-            Object.entries(plantData).map(
-              ([sectionName, sectionData], sectionIndex) => (
+          {Object.keys(plantData)
+            .sort((a, b) => {
+              const aNum = parseInt(a.replace("section", ""), 10);
+              const bNum = parseInt(b.replace("section", ""), 10);
+              return aNum - bNum;
+            })
+            .map((sectionName) => (
+              <div
+                key={sectionName}
+                className="flex justify-center mt-clamp-4vh"
+              >
                 <div
-                  key={sectionName}
-                  className="flex justify-center mt-clamp-4vh"
+                  className="border-black border-2 grid gap-clamp-1vw p-clamp-0.5vw"
+                  style={{
+                    gridTemplateColumns: `repeat(${getMaxCols(
+                      plantData[sectionName]
+                    )}, minmax(0, 1fr))`,
+                  }}
                 >
-                  <div
-                    className="border-black border-2 grid gap-clamp-1vw p-clamp-0.5vw"
-                    style={{
-                      gridTemplateColumns: `repeat(${getMaxCols(
-                        sectionData
-                      )}, minmax(0, 1fr))`,
-                    }}
-                  >
-                    {sectionData.map((row, rowIndex) =>
-                      row.map((plant, plantIndex) => (
-                        <PlantWithToolTip
-                          key={`${sectionIndex}-${rowIndex}-${plantIndex}`}
-                          plantId={plant.plantId}
-                          plantDate={plant.startDate || ""}
-                          cuttingType={plant.cutType || ""}
-                          hasLabel={plant.hasLabel || false}
-                          isEditing={isEditing}
-                          onUpdate={(
+                  {plantData[sectionName].map((row, rowIndex) =>
+                    row.map((plant, plantIndex) => (
+                      <PlantWithToolTip
+                        key={`${plant.plantId}-${sectionName}-${rowIndex}-${plantIndex}`}
+                        plantId={plant.plantId}
+                        plantDate={plant.startDate || ""}
+                        cuttingType={plant.cutType || ""}
+                        hasLabel={plant.hasLabel || false}
+                        isEditing={isEditing}
+                        onUpdate={(
+                          newPlantId,
+                          newDate,
+                          newCuttingType,
+                          newHasLabel
+                        ) =>
+                          handleUpdatePlantData(
+                            parseInt(sectionName.replace("section", ""), 10),
+                            rowIndex,
+                            plantIndex,
                             newPlantId,
                             newDate,
                             newCuttingType,
                             newHasLabel
-                          ) =>
-                            handleUpdatePlantData(
-                              sectionIndex + 1,
-                              rowIndex,
-                              plantIndex,
-                              newPlantId,
-                              newDate,
-                              newCuttingType,
-                              newHasLabel
-                            )
-                          }
-                        />
-                      ))
-                    )}
-                  </div>
+                          )
+                        }
+                      />
+                    ))
+                  )}
                 </div>
-              )
-            )}
+              </div>
+            ))}
         </div>
       </main>
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>

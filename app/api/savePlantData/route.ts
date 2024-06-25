@@ -1,29 +1,27 @@
-import { NextRequest, NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
-import { PlantData } from '@/data/plantData';
+// API handler example
+import { NextApiRequest, NextApiResponse } from 'next';
+import { savePlantDataToFirestore } from '@/libs/firestore/firestoreOperations';
 
-const plantDataFilePath = path.join(process.cwd(), "data", "plantData.ts");
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  console.log('Request method:', req.method);
+  console.log('Request body:', req.body);
 
-export async function POST(req: NextRequest) {
-  const updatedPlantData: PlantData = await req.json();
-
-  try {
-    const fileContent = fs.readFileSync(plantDataFilePath, "utf8");
-
-    const interfacePart = fileContent.match(/export interface[\s\S]*?\n}\n/g);
-    if (!interfacePart) {
-      throw new Error("Failed to extract interface part from the file.");
+  if (req.method === 'POST') {
+    try {
+      const data = req.body;
+      console.log('Data to save:', data);
+      await savePlantDataToFirestore('plantCollection', data);
+      res.status(200).json({ message: 'Plant data saved successfully' });
+    } catch (error) {
+      if (error instanceof Error) {
+        console.error("Error saving plant data:", error.message, error.stack);
+        res.status(500).json({ error: 'Failed to save plant data', details: error.message });
+      } else {
+        console.error("Unexpected error saving plant data:", error);
+        res.status(500).json({ error: 'Failed to save plant data', details: 'Unexpected error occurred' });
+      }
     }
-
-    const newDataContent = `export const plantData: PlantData = ${JSON.stringify(updatedPlantData, null, 2)};`;
-
-    const newFileContent = `${interfacePart.join("")}\n${newDataContent}`;
-
-    fs.writeFileSync(plantDataFilePath, newFileContent, "utf8");
-    return NextResponse.json({ message: "Plant data saved successfully" }, { status: 200 });
-  } catch (error) {
-    console.error("Error writing to file:", error);
-    return NextResponse.json({ error: "Failed to save plant data" }, { status: 500 });
+  } else {
+    res.status(405).json({ error: 'Method not allowed' });
   }
 }
