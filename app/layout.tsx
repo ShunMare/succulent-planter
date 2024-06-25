@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Header from "@/app/components/Header";
+import Footer from "@/app/components/Footer";
 import "./globals.css";
 import "@/styles/fonts.css";
 import "@/styles/clamps.css";
@@ -19,6 +20,7 @@ export default function RootLayout({
       <body className={""}>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

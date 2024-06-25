@@ -76,7 +76,7 @@ const PlantWithToolTip: React.FC<PlantWithToolTipProps> = ({
           alt={altText}
         >
           <Plant
-            className="w-clamp-12vw"
+            className="w-clamp-15vw"
             imgSrc={imgSrc}
             alt={altText}
             isEditing={isEditing}
@@ -86,7 +86,7 @@ const PlantWithToolTip: React.FC<PlantWithToolTipProps> = ({
       ) : (
         <div onClick={handlePlantClick}>
           <Plant
-            className="w-clamp-12vw"
+            className="w-clamp-15vw"
             imgSrc={imgSrc}
             alt={altText}
             isEditing={isEditing}

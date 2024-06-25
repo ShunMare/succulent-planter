@@ -129,7 +129,7 @@ export default function Home() {
   return (
     <>
       <main className="bg-[#FBE3DE] flex justify-center">
-        <div className="py-clamp-20vh max-w-[768px] w-full px-clamp-5vw">
+        <div className="pt-clamp-15vh pb-clamp-20vh max-w-[768px] w-full px-clamp-2vw">
           <div className="flex justify-end space-x-4">
             <Button
               bgColor="#fdf2a0"

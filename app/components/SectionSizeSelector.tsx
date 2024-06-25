@@ -18,7 +18,7 @@ const SectionSizeSelector: React.FC<SectionSizeSelectorProps> = ({
   onCancel,
 }) => {
   return (
-    <div>
+    <div className="font-primaryBold">
       <h2 className="text-lg font-bold mb-4">セクションのサイズを選択</h2>
       <div className="mb-4">
         <label className="block mb-1">行の数:</label>
@@ -41,7 +41,7 @@ const SectionSizeSelector: React.FC<SectionSizeSelectorProps> = ({
           onChange={(e) => setCols(parseInt(e.target.value))}
           className="border rounded p-2"
         >
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
+          {[1, 2, 3, 4, 5, 6].map((num) => (
             <option key={num} value={num}>
               {num}
             </option>
