@@ -5,6 +5,8 @@ interface SectionSizeSelectorProps {
   cols: number;
   setRows: (rows: number) => void;
   setCols: (cols: number) => void;
+  planterType: string;
+  setPlanterType: (type: string) => void;
   onSave: () => void;
   onCancel: () => void;
 }
@@ -14,6 +16,8 @@ const SectionSizeSelector: React.FC<SectionSizeSelectorProps> = ({
   cols,
   setRows,
   setCols,
+  planterType,
+  setPlanterType,
   onSave,
   onCancel,
 }) => {
@@ -46,6 +50,17 @@ const SectionSizeSelector: React.FC<SectionSizeSelectorProps> = ({
               {num}
             </option>
           ))}
+        </select>
+      </div>
+      <div className="mb-4">
+        <label className="block mb-1">プランターの種類:</label>
+        <select
+          value={planterType}
+          onChange={(e) => setPlanterType(e.target.value)}
+          className="border rounded p-2"
+        >
+          <option value="苗植え">苗植え</option>
+          <option value="寄せ植え">寄せ植え</option>
         </select>
       </div>
       <div className="flex justify-end">

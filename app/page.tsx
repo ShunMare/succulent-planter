@@ -23,6 +23,7 @@ export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [rows, setRows] = useState(4);
   const [cols, setCols] = useState(6);
+  const [planterType, setPlanterType] = useState("苗植え");
 
   useEffect(() => {
     const useLocalData = process.env.USE_LOCAL_DATA === "true";
@@ -30,11 +31,16 @@ export default function Home() {
     const fetchData = async () => {
       if (!useLocalData) {
         await login();
-        const fetchedPlantData = await fetchPlantDataFromFirestore(
-          "plantCollection"
-        );
-        setPlantData(fetchedPlantData);
-        setOriginalPlantData(fetchedPlantData);
+        const [plantCollectionData, combinedPlantCollectionData] = await Promise.all([
+          fetchPlantDataFromFirestore("plantCollection"),
+          fetchPlantDataFromFirestore("combinedPlantCollection")
+        ]);
+        const mergedData = {
+          ...plantCollectionData,
+          ...combinedPlantCollectionData
+        };
+        setPlantData(mergedData);
+        setOriginalPlantData(mergedData);
       } else {
         setPlantData(localPlantData);
         setOriginalPlantData(localPlantData);
@@ -68,9 +74,20 @@ export default function Home() {
     }
   };
 
-  const saveUpdatedPlantData = async (updatedData: any) => {
+  const saveUpdatedPlantData = async (
+    updatedData: any,
+    newSectionKey?: string
+  ) => {
     try {
-      await savePlantDataToFirestore("plantCollection", updatedData);
+      if (planterType === "苗植え") {
+        await savePlantDataToFirestore("plantCollection", updatedData);
+      } else if (planterType === "寄せ植え" && newSectionKey) {
+        const newSectionData = { [newSectionKey]: updatedData[newSectionKey] };
+        await savePlantDataToFirestore(
+          "combinedPlantCollection",
+          newSectionData
+        );
+      }
     } catch (error) {
       if (error instanceof Error) {
         console.error("Error saving plant data:", error.message);
@@ -158,13 +175,21 @@ export default function Home() {
     return newSection;
   };
 
-  const handleAddSection = () => {
+  const handleAddSection = async () => {
     const newSectionKey = `section${Object.keys(plantData).length + 1}`;
-    setPlantData({
+    const updatedData = {
       ...plantData,
       [newSectionKey]: createNewSection(rows, cols),
-    });
+    };
+    setPlantData(updatedData);
     setIsModalOpen(false);
+    await saveUpdatedPlantData(updatedData, newSectionKey);
+  };
+
+  const getSectionStyle = (sectionName: string) => {
+    return sectionName.startsWith("combinedSection")
+      ? { backgroundColor: "#FFCCCC" } // red background for combinedPlantCollection sections
+      : { backgroundColor: "#000000" }; // black background for plantCollection sections
   };
 
   return (
@@ -188,7 +213,7 @@ export default function Home() {
             />
             <Button
               bgColor="#90EE90"
-              defaultText="プランターを追加"
+              defaultText="プランター"
               changedText="追加中"
               isActive={false}
               onClick={() => setIsModalOpen(true)}
@@ -213,8 +238,9 @@ export default function Home() {
                   className="flex justify-center mt-clamp-4vh"
                 >
                   <div
-                    className="border-[#1F1F1F] border-clamp-1vw bg-black grid gap-clamp-1vw rounded-clamp-1vw p-clamp-0.5vw"
+                    className="border-[#1F1F1F] border-clamp-1vw grid gap-clamp-1vw rounded-clamp-1vw p-clamp-0.5vw"
                     style={{
+                      ...getSectionStyle(sectionName),
                       gridTemplateColumns: `repeat(${getMaxCols(
                         plantData[sectionName]
                       )}, minmax(0, 1fr))`,
@@ -260,6 +286,8 @@ export default function Home() {
           cols={cols}
           setRows={setRows}
           setCols={setCols}
+          planterType={planterType}
+          setPlanterType={setPlanterType}
           onSave={handleAddSection}
           onCancel={() => setIsModalOpen(false)}
         />
