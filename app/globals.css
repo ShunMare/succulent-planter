@@ -37,5 +37,10 @@ body {
 }
 
 .bg-soil {
-  background-image: url('/assets/images/succulent/soil.png');
+  background-image: url("/assets/images/succulent/soil.png");
+}
+
+.border-plant-gray {
+  border-color: rgb(57, 57, 57);
+  border-width: 2px;
 }

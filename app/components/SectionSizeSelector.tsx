@@ -53,7 +53,7 @@ const SectionSizeSelector: React.FC<SectionSizeSelectorProps> = ({
         </select>
       </div>
       <div className="mb-4">
-        <label className="block mb-1">プランターの種類:</label>
+        <label className="block mb-1">プランタータイプ:</label>
         <select
           value={planterType}
           onChange={(e) => setPlanterType(e.target.value)}

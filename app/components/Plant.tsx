@@ -6,6 +6,8 @@ interface PlantProps {
   alt: string;
   isEditing: boolean;
   hasLabel: boolean;
+  isBg?: boolean;
+  isBorder?: boolean;
 }
 
 const Plant: React.FC<PlantProps> = ({
@@ -14,10 +16,15 @@ const Plant: React.FC<PlantProps> = ({
   alt,
   isEditing,
   hasLabel,
+  isBg = true,
+  isBorder = true,
 }) => {
+  const bgClass = isBg ? "bg-soil" : "";
+  const borderClass = isBorder ? "border-plant-gray" : "";
+
   return (
     <div
-      className={`relative rounded-clamp-2vw border-[#393939] border-2 aspect-square bg-cover bg-soil ${className}`}
+      className={`relative rounded-clamp-2vw aspect-square bg-cover ${bgClass} ${borderClass} ${className}`}
     >
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] brightness-105 contrast-125">
         {imgSrc && <img className="w-full" src={imgSrc} alt={alt} />}

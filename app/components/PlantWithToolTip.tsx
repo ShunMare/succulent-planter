@@ -16,6 +16,8 @@ interface PlantWithToolTipProps {
     newCuttingType: string,
     newHasLabel: boolean
   ) => void;
+  isPlantBg?: boolean;
+  isPlantBorder?: boolean;
 }
 
 const PlantWithToolTip: React.FC<PlantWithToolTipProps> = ({
@@ -25,6 +27,8 @@ const PlantWithToolTip: React.FC<PlantWithToolTipProps> = ({
   hasLabel,
   isEditing,
   onUpdate,
+  isPlantBg = true,
+  isPlantBorder = true,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -81,6 +85,8 @@ const PlantWithToolTip: React.FC<PlantWithToolTipProps> = ({
             alt={altText}
             isEditing={isEditing}
             hasLabel={hasLabel}
+            isBg={isPlantBg}
+            isBorder={isPlantBorder}
           />
         </ToolTip>
       ) : (
@@ -91,6 +97,8 @@ const PlantWithToolTip: React.FC<PlantWithToolTipProps> = ({
             alt={altText}
             isEditing={isEditing}
             hasLabel={hasLabel}
+            isBg={isPlantBg}
+            isBorder={isPlantBorder}
           />
         </div>
       )}
