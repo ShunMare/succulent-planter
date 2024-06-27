@@ -38,11 +38,15 @@ export default function Home() {
         const plantCollectionData = await fetchPlantDataFromFirestore(
           "plantCollection"
         );
-        const combinedPlantCollectionData =
-          await fetchPlantDataFromFirestore("combinedPlantCollection");
+        const combinedPlantCollectionData = await fetchPlantDataFromFirestore(
+          "combinedPlantCollection"
+        );
 
         console.log("Fetched plantCollectionData:", plantCollectionData);
-        console.log("Fetched combinedPlantCollectionData:", combinedPlantCollectionData);
+        console.log(
+          "Fetched combinedPlantCollectionData:",
+          combinedPlantCollectionData
+        );
 
         setPlantData(plantCollectionData);
         setCombinedPlantData(combinedPlantCollectionData);
@@ -72,8 +76,12 @@ export default function Home() {
     newHasLabel: boolean,
     isCombined: boolean = false
   ) => {
-    const sectionKey = isCombined ? `combinedSection${sectionIndex}` : `section${sectionIndex}`;
-    const updatedPlantData = isCombined ? { ...combinedPlantData } : { ...plantData };
+    const sectionKey = isCombined
+      ? `combinedSection${sectionIndex}`
+      : `section${sectionIndex}`;
+    const updatedPlantData = isCombined
+      ? { ...combinedPlantData }
+      : { ...plantData };
     if (updatedPlantData[sectionKey]) {
       const plantToUpdate = updatedPlantData[sectionKey][rowIndex][plantIndex];
       if (!plantToUpdate.uniqueId) {
@@ -97,7 +105,9 @@ export default function Home() {
     isCombined: boolean = false
   ) => {
     try {
-      const collectionName = isCombined ? "combinedPlantCollection" : "plantCollection";
+      const collectionName = isCombined
+        ? "combinedPlantCollection"
+        : "plantCollection";
       console.log("Saving data to collection:", collectionName);
       const dataToSave = newSectionKey
         ? { [newSectionKey]: updatedData[newSectionKey] }
@@ -107,11 +117,18 @@ export default function Home() {
       console.log(`Data saved successfully to ${collectionName}`);
 
       // Fetch the latest data again
-      const plantCollectionData = await fetchPlantDataFromFirestore("plantCollection");
-      const combinedPlantCollectionData = await fetchPlantDataFromFirestore("combinedPlantCollection");
+      const plantCollectionData = await fetchPlantDataFromFirestore(
+        "plantCollection"
+      );
+      const combinedPlantCollectionData = await fetchPlantDataFromFirestore(
+        "combinedPlantCollection"
+      );
 
       console.log("Fetched plantCollectionData:", plantCollectionData);
-      console.log("Fetched combinedPlantCollectionData:", combinedPlantCollectionData);
+      console.log(
+        "Fetched combinedPlantCollectionData:",
+        combinedPlantCollectionData
+      );
 
       setPlantData(plantCollectionData);
       setCombinedPlantData(combinedPlantCollectionData);
@@ -143,8 +160,8 @@ export default function Home() {
 
     for (const [sectionKey, sectionData] of Object.entries(plantData).sort(
       (a, b) =>
-        Number(a.replace("section", "").padStart(2, '0')) -
-        Number(b.replace("section", "").padStart(2, '0'))
+        Number(a[0].replace("section", "").padStart(2, "0")) -
+        Number(b[0].replace("section", "").padStart(2, "0"))
     )) {
       const maxCols = getMaxCols(sectionData);
       const newSectionData = [];
@@ -200,7 +217,9 @@ export default function Home() {
   const handleAddSection = async () => {
     const isCombined = planterType !== "苗植え";
     const dataToUpdate = isCombined ? combinedPlantData : plantData;
-    const newSectionKey = `${isCombined ? "combinedSection" : "section"}${Object.keys(dataToUpdate).length + 1}`;
+    const newSectionKey = `${isCombined ? "combinedSection" : "section"}${
+      Object.keys(dataToUpdate).length + 1
+    }`;
     const updatedData = {
       ...dataToUpdate,
       [newSectionKey]: createNewSection(rows, cols),
@@ -242,9 +261,10 @@ export default function Home() {
             />
           </div>
           {Object.keys(plantData)
+
             .sort((a, b) => {
-              const aNum = a.replace("section", "").padStart(2, '0');
-              const bNum = b.replace("section", "").padStart(2, '0');
+              const aNum = a[0].replace("section", "").padStart(2, "0");
+              const bNum = b[0].replace("section", "").padStart(2, "0");
               return aNum.localeCompare(bNum);
             })
             .map((sectionName) => {
@@ -274,10 +294,7 @@ export default function Home() {
                           newHasLabel
                         ) =>
                           handleUpdatePlantData(
-                            parseInt(
-                              sectionName.replace("section", ""),
-                              10
-                            ),
+                            parseInt(sectionName.replace("section", ""), 10),
                             rowIndex,
                             plantIndex,
                             newPlantId,
@@ -294,8 +311,8 @@ export default function Home() {
             })}
           {Object.keys(combinedPlantData)
             .sort((a, b) => {
-              const aNum = a.replace("combinedSection", "").padStart(2, '0');
-              const bNum = b.replace("combinedSection", "").padStart(2, '0');
+              const aNum = a[0].replace("combinedSection", "").padStart(2, "0");
+              const bNum = b[0].replace("combinedSection", "").padStart(2, "0");
               return aNum.localeCompare(bNum);
             })
             .map((sectionName) => {
