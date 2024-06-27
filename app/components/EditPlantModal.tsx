@@ -8,6 +8,8 @@ interface EditPlantModalProps {
   plants: Plant[];
   targetPlantId: number;
   initialHasLabel: boolean;
+  initialDate: string;
+  initialCuttingType: string;
   onUpdate: (
     plantId: number,
     cuttingType: string,
@@ -22,25 +24,29 @@ const EditPlantModal: React.FC<EditPlantModalProps> = ({
   plants,
   targetPlantId,
   initialHasLabel,
+  initialDate,
+  initialCuttingType,
   onUpdate,
 }) => {
   const [selectedPlantId, setSelectedPlantId] = useState<number>(targetPlantId);
-  const [selectedCuttingType, setSelectedCuttingType] = useState<string>("");
-  const [selectedDate, setSelectedDate] = useState<string>("");
+  const [selectedCuttingType, setSelectedCuttingType] =
+    useState<string>(initialCuttingType);
+  const [selectedDate, setSelectedDate] = useState<string>(initialDate);
   const [sortedPlants, setSortedPlants] = useState<Plant[]>([]);
   const [hasLabel, setHasLabel] = useState<boolean>(initialHasLabel);
 
   const selectedPlant = plants.find((p) => p.id === selectedPlantId);
 
   const handleUpdateClick = () => {
-    onUpdate(selectedPlantId, selectedCuttingType, selectedDate, hasLabel);
+    const finalCuttingType = selectedCuttingType === "" ? "" : selectedCuttingType;
+    onUpdate(selectedPlantId, finalCuttingType, selectedDate, hasLabel);
     onClose();
   };
 
   useEffect(() => {
     if (isOpen) {
-      setSelectedCuttingType("");
-      setSelectedDate("");
+      setSelectedCuttingType(initialCuttingType);
+      setSelectedDate(initialDate);
       const sorted = [...plants].sort((a, b) =>
         a.reading.localeCompare(b.reading, "ja")
       );
@@ -48,7 +54,14 @@ const EditPlantModal: React.FC<EditPlantModalProps> = ({
       setSelectedPlantId(targetPlantId);
       setHasLabel(initialHasLabel);
     }
-  }, [isOpen, targetPlantId, plants, initialHasLabel]);
+  }, [
+    isOpen,
+    targetPlantId,
+    plants,
+    initialHasLabel,
+    initialDate,
+    initialCuttingType,
+  ]);
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>

@@ -2312,14 +2312,14 @@ export const plants: Plant[] = [
   },
   {
     id: 209,
-    name: "",
-    scientificName: "",
-    fileName: "",
-    family: "",
-    genus: "",
+    name: "パープルパール",
+    scientificName: "Echeveria 'Purple Pearl'",
+    fileName: "echeveria-purple-pearl",
+    family: "ベンケイソウ科",
+    genus: "エケベリア属",
     notes: "",
     relatedId: [],
-    reading: ""
+    reading: "パープルパール"
   },
   {
     id: 210,

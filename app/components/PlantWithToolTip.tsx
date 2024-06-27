@@ -109,6 +109,8 @@ const PlantWithToolTip: React.FC<PlantWithToolTipProps> = ({
           plants={plants}
           targetPlantId={plantId}
           initialHasLabel={hasLabel}
+          initialCuttingType={cuttingType}
+          initialDate={plantDate}
           onUpdate={handleUpdate}
         />
       )}

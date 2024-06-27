@@ -101,35 +101,21 @@ export default function Home() {
 
   const saveUpdatedPlantData = async (
     updatedData: any,
-    newSectionKey?: string,
-    isCombined: boolean = false
+    collectionName: string,
+    newSectionKey?: string
   ) => {
     try {
-      const collectionName = isCombined
-        ? "combinedPlantCollection"
-        : "plantCollection";
-      console.log("Saving data to collection:", collectionName);
       const dataToSave = newSectionKey
         ? { [newSectionKey]: updatedData[newSectionKey] }
         : updatedData;
-      console.log("Data to save:", dataToSave);
       await savePlantDataToFirestore(collectionName, dataToSave);
-      console.log(`Data saved successfully to ${collectionName}`);
 
-      // Fetch the latest data again
       const plantCollectionData = await fetchPlantDataFromFirestore(
         "plantCollection"
       );
       const combinedPlantCollectionData = await fetchPlantDataFromFirestore(
         "combinedPlantCollection"
       );
-
-      console.log("Fetched plantCollectionData:", plantCollectionData);
-      console.log(
-        "Fetched combinedPlantCollectionData:",
-        combinedPlantCollectionData
-      );
-
       setPlantData(plantCollectionData);
       setCombinedPlantData(combinedPlantCollectionData);
       setOriginalPlantData(plantCollectionData);
@@ -140,8 +126,8 @@ export default function Home() {
 
   useEffect(() => {
     if (!isEditing) {
-      saveUpdatedPlantData(plantData);
-      saveUpdatedPlantData(combinedPlantData, undefined, true);
+      saveUpdatedPlantData(plantData, "plantCollection");
+      saveUpdatedPlantData(combinedPlantData, "combinedPlantCollection");
     }
   }, [isEditing]);
 
@@ -215,22 +201,20 @@ export default function Home() {
   };
 
   const handleAddSection = async () => {
-    const isCombined = planterType !== "苗植え";
-    const dataToUpdate = isCombined ? combinedPlantData : plantData;
-    const newSectionKey = `${
-      isCombined ? "combinedSection" : "section"
-    }${Object.keys(dataToUpdate).length + 1}`;
+  const collectionName = planterType === "苗植え" ? "plantCollection" : "combinedPlantCollection";
+  const dataToUpdate = collectionName === "combinedPlantCollection" ? combinedPlantData : plantData;
+  const newSectionKey = `${collectionName === "combinedPlantCollection" ? "combinedSection" : "section"}${Object.keys(dataToUpdate).length + 1}`;
     const updatedData = {
       ...dataToUpdate,
       [newSectionKey]: createNewSection(rows, cols),
     };
-    if (isCombined) {
+  if (collectionName === "combinedPlantCollection") {
       setCombinedPlantData(updatedData);
     } else {
       setPlantData(updatedData);
     }
     setIsModalOpen(false);
-    await saveUpdatedPlantData(updatedData, newSectionKey, isCombined);
+    await saveUpdatedPlantData(updatedData, collectionName, newSectionKey);
   };
 
   return (
