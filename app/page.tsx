@@ -217,9 +217,9 @@ export default function Home() {
   const handleAddSection = async () => {
     const isCombined = planterType !== "苗植え";
     const dataToUpdate = isCombined ? combinedPlantData : plantData;
-    const newSectionKey = `${isCombined ? "combinedSection" : "section"}${
-      Object.keys(dataToUpdate).length + 1
-    }`;
+    const newSectionKey = `${
+      isCombined ? "combinedSection" : "section"
+    }${Object.keys(dataToUpdate).length + 1}`;
     const updatedData = {
       ...dataToUpdate,
       [newSectionKey]: createNewSection(rows, cols),
@@ -260,23 +260,22 @@ export default function Home() {
               onClick={() => setIsModalOpen(true)}
             />
           </div>
-          {Object.keys(plantData)
-
+          {Object.entries(plantData)
             .sort((a, b) => {
               const aNum = a[0].replace("section", "").padStart(2, "0");
               const bNum = b[0].replace("section", "").padStart(2, "0");
               return aNum.localeCompare(bNum);
             })
-            .map((sectionName) => {
+            .map(([sectionName, sectionData]) => {
               console.log("Rendering section:", sectionName);
-              const maxCols = getMaxCols(plantData[sectionName]);
+              const maxCols = getMaxCols(sectionData);
               return (
                 <NurseryPlantSectionWrapper
                   key={sectionName}
                   sectionName={sectionName}
                   maxCols={maxCols}
                 >
-                  {plantData[sectionName].map((row, rowIndex) =>
+                  {sectionData.map((row, rowIndex) =>
                     row.map((plant, plantIndex) => (
                       <PlantWithToolTip
                         key={`${plant.plantId}-${sectionName}-${rowIndex}-${plantIndex}`}
@@ -309,22 +308,22 @@ export default function Home() {
                 </NurseryPlantSectionWrapper>
               );
             })}
-          {Object.keys(combinedPlantData)
+          {Object.entries(combinedPlantData)
             .sort((a, b) => {
               const aNum = a[0].replace("combinedSection", "").padStart(2, "0");
               const bNum = b[0].replace("combinedSection", "").padStart(2, "0");
               return aNum.localeCompare(bNum);
             })
-            .map((sectionName) => {
+            .map(([sectionName, sectionData]) => {
               console.log("Rendering section:", sectionName);
-              const maxCols = getMaxCols(combinedPlantData[sectionName]);
+              const maxCols = getMaxCols(sectionData);
               return (
                 <CombinedPlantSectionWrapper
                   key={sectionName}
                   sectionName={sectionName}
                   maxCols={maxCols}
                 >
-                  {combinedPlantData[sectionName].map((row, rowIndex) =>
+                  {sectionData.map((row, rowIndex) =>
                     row.map((plant, plantIndex) => (
                       <PlantWithToolTip
                         key={`${plant.plantId}-${sectionName}-${rowIndex}-${plantIndex}`}
