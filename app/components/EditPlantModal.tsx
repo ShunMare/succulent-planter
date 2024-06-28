@@ -87,6 +87,7 @@ const EditPlantModal: React.FC<EditPlantModalProps> = ({
           <option value="胴切り">胴切り</option>
           <option value="葉刺し">葉刺し</option>
           <option value="茎刺し">茎刺し</option>
+          <option value="株分け">株分け</option>
         </select>
         <input
           type="date"
