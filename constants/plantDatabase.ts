@@ -245,12 +245,12 @@ export const plants: Plant[] = [
   {
     id: 21,
     name: "プロリフィカ",
-    scientificName: "prolifica",
-    fileName: "prolifica",
+    scientificName: "Echeveria prolifica",
+    fileName: "echeveria-prolifica",
     family: "ベンケイソウ科",
     genus: "エケベリア属",
     notes: "",
-    relatedId: [],
+    relatedId: [231],
     reading: "プロリフィカ"
   },
   {
@@ -2554,14 +2554,14 @@ export const plants: Plant[] = [
   },
   {
     id: 231,
-    name: "プロリフェラ",
-    scientificName: "Graptoveria 'Titubans'",
-    fileName: "graptoveria-titubans",
+    name: "プロリフィラ",
+    scientificName: "Echeveria prolifica",
+    fileName: "echeveria-prolifica",
     family: "ベンケイソウ科",
-    genus: "グラプトベリア属",
+    genus: "エケベリア属",
     notes: "",
-    relatedId: [229, 230],
-    reading: "プロリフェラ"
+    relatedId: [21],
+    reading: "プロリフィラ"
   },
   {
     id: 232,
@@ -2672,5 +2672,38 @@ export const plants: Plant[] = [
     notes: "",
     relatedId: [240, 241],
     reading: "ニュルンベルグノシンジュ"
+  },
+  {
+    id: 243,
+    name: "蒼星",
+    scientificName: "Graptopetalum 'Sousei'",
+    fileName: "graptopetalum-sousei",
+    family: "ベンケイソウ科",
+    genus: "グラプトペタルム属",
+    notes: "",
+    relatedId: [],
+    reading: "ソウセイ"
+  },
+  {
+    id: 244,
+    name: "アドルフィ カッパー",
+    scientificName: "Sedum adolphi 'Copper'",
+    fileName: "sedum-adolphi-copper",
+    family: "ベンケイソウ科",
+    genus: "セダム属",
+    notes: "",
+    relatedId: [245],
+    reading: "アドルフィ カッパー"
+  },
+  {
+    id: 245,
+    name: "アドルフィ コッパー",
+    scientificName: "Sedum adolphi 'Copper'",
+    fileName: "sedum-adolphi-copper",
+    family: "ベンケイソウ科",
+    genus: "セダム属",
+    notes: "",
+    relatedId: [244],
+    reading: "アドルフィ コッパー"
   },
 ];
