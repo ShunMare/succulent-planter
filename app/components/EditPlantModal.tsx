@@ -29,17 +29,19 @@ const EditPlantModal: React.FC<EditPlantModalProps> = ({
   onUpdate,
 }) => {
   const [selectedPlantId, setSelectedPlantId] = useState<number>(targetPlantId);
+  const [selectedDate, setSelectedDate] = useState<string>(initialDate);
   const [selectedCuttingType, setSelectedCuttingType] =
     useState<string>(initialCuttingType);
-  const [selectedDate, setSelectedDate] = useState<string>(initialDate);
   const [sortedPlants, setSortedPlants] = useState<Plant[]>([]);
   const [hasLabel, setHasLabel] = useState<boolean>(initialHasLabel);
 
   const selectedPlant = plants.find((p) => p.id === selectedPlantId);
 
   const handleUpdateClick = () => {
-    const finalCuttingType = selectedCuttingType === "" ? "" : selectedCuttingType;
-    onUpdate(selectedPlantId, finalCuttingType, selectedDate, hasLabel);
+    const finalCuttingType =
+      selectedCuttingType === "" ? "" : selectedCuttingType;
+    const finalDate = selectedDate === "" ? "" : selectedDate;
+    onUpdate(selectedPlantId, finalDate, finalCuttingType, hasLabel);
     onClose();
   };
 
