@@ -27,6 +27,7 @@ export default function Home() {
   const [rows, setRows] = useState(4);
   const [cols, setCols] = useState(6);
   const [planterType, setPlanterType] = useState("苗植え");
+  const [potType, setPotType] = useState(0);
 
   useEffect(() => {
     const useLocalData = process.env.USE_LOCAL_DATA === "true";
@@ -34,25 +35,16 @@ export default function Home() {
     const fetchData = async () => {
       if (!useLocalData) {
         await login();
-        console.log("Fetching data from Firestore...");
         const plantCollectionData = await fetchPlantDataFromFirestore(
           "plantCollection"
         );
         const combinedPlantCollectionData = await fetchPlantDataFromFirestore(
           "combinedPlantCollection"
         );
-
-        console.log("Fetched plantCollectionData:", plantCollectionData);
-        console.log(
-          "Fetched combinedPlantCollectionData:",
-          combinedPlantCollectionData
-        );
-
         setPlantData(plantCollectionData);
         setCombinedPlantData(combinedPlantCollectionData);
         setOriginalPlantData(plantCollectionData);
       } else {
-        console.log("Using local data...");
         setPlantData(localPlantData);
         setOriginalPlantData(localPlantData);
       }
@@ -60,11 +52,6 @@ export default function Home() {
 
     fetchData();
   }, []);
-
-  const getCollectionName = (type: string) => {
-    console.log("Determining collection name for type:", type);
-    return type === "苗植え" ? "plantCollection" : "combinedPlantCollection";
-  };
 
   const handleUpdatePlantData = (
     sectionIndex: number,
@@ -92,6 +79,8 @@ export default function Home() {
       plantToUpdate.cutType = newCuttingType;
       plantToUpdate.hasLabel = newHasLabel;
       if (isCombined) {
+        console.log("updatedPlantData!!!");
+        console.log(updatedPlantData);
         setCombinedPlantData(updatedPlantData);
       } else {
         setPlantData(updatedPlantData);
@@ -201,14 +190,36 @@ export default function Home() {
   };
 
   const handleAddSection = async () => {
-  const collectionName = planterType === "苗植え" ? "plantCollection" : "combinedPlantCollection";
-  const dataToUpdate = collectionName === "combinedPlantCollection" ? combinedPlantData : plantData;
-  const newSectionKey = `${collectionName === "combinedPlantCollection" ? "combinedSection" : "section"}${Object.keys(dataToUpdate).length + 1}`;
+    const collectionName =
+      planterType === "苗植え" ? "plantCollection" : "combinedPlantCollection";
+    const dataToUpdate =
+      collectionName === "combinedPlantCollection"
+        ? combinedPlantData
+        : plantData;
+    const newSectionIndex = Object.keys(dataToUpdate).length + 1;
+    const newSectionKey = `${
+      collectionName === "combinedPlantCollection"
+        ? `combinedSection${newSectionIndex}`
+        : `section${newSectionIndex}`
+    }`;
+
+    let newSectionData = createNewSection(rows, cols);
+
+    if (collectionName === "combinedPlantCollection") {
+      newSectionData = newSectionData.map((row, rowIndex) =>
+        row.map((plant, colIndex) => ({
+          ...plant,
+          uniqueId: `${newSectionKey}-${rowIndex}-${colIndex}-${potType}`,
+        }))
+      );
+    }
+
     const updatedData = {
       ...dataToUpdate,
-      [newSectionKey]: createNewSection(rows, cols),
+      [newSectionKey]: newSectionData,
     };
-  if (collectionName === "combinedPlantCollection") {
+
+    if (collectionName === "combinedPlantCollection") {
       setCombinedPlantData(updatedData);
     } else {
       setPlantData(updatedData);
@@ -251,7 +262,6 @@ export default function Home() {
               return aNum.localeCompare(bNum);
             })
             .map(([sectionName, sectionData]) => {
-              console.log("Rendering section:", sectionName);
               const maxCols = getMaxCols(sectionData);
               return (
                 <NurseryPlantSectionWrapper
@@ -292,68 +302,84 @@ export default function Home() {
                 </NurseryPlantSectionWrapper>
               );
             })}
-          {Object.entries(combinedPlantData)
-            .sort((a, b) => {
-              const aNum = a[0].replace("combinedSection", "").padStart(2, "0");
-              const bNum = b[0].replace("combinedSection", "").padStart(2, "0");
-              return aNum.localeCompare(bNum);
-            })
-            .map(([sectionName, sectionData]) => {
-              console.log("Rendering section:", sectionName);
-              const maxCols = getMaxCols(sectionData);
-              return (
-                <CombinedPlantSectionWrapper
-                  key={sectionName}
-                  sectionName={sectionName}
-                  maxCols={maxCols}
-                >
-                  {sectionData.map((row, rowIndex) =>
-                    row.map((plant, plantIndex) => (
-                      <PlantWithToolTip
-                        key={`${plant.plantId}-${sectionName}-${rowIndex}-${plantIndex}`}
-                        plantId={plant.plantId}
-                        plantDate={plant.startDate || ""}
-                        cuttingType={plant.cutType || ""}
-                        hasLabel={plant.hasLabel || false}
-                        isEditing={isEditing}
-                        isPlantBg={false}
-                        isPlantBorder={false}
-                        onUpdate={(
-                          newPlantId,
-                          newDate,
-                          newCuttingType,
-                          newHasLabel
-                        ) =>
-                          handleUpdatePlantData(
-                            parseInt(
-                              sectionName.replace("combinedSection", ""),
-                              10
-                            ),
-                            rowIndex,
-                            plantIndex,
+          <div className="grid grid-cols-2 gap-clamp-1vw">
+            {Object.entries(combinedPlantData)
+              .sort((a, b) => {
+                const aNum = a[0]
+                  .split("-")[0]
+                  .replace("combinedSection", "")
+                  .padStart(2, "0");
+                const bNum = b[0]
+                  .split("-")[0]
+                  .replace("combinedSection", "")
+                  .padStart(2, "0");
+                return aNum.localeCompare(bNum);
+              })
+              .map(([sectionName, sectionData]) => {
+                const sectionParts = sectionName.split("-");
+                const potType = parseInt(
+                  sectionParts[sectionParts.length - 1],
+                  10
+                );
+
+                const maxCols = getMaxCols(sectionData);
+                return (
+                  <CombinedPlantSectionWrapper
+                    key={sectionName}
+                    sectionName={sectionName}
+                    maxCols={maxCols}
+                    potType={potType}
+                  >
+                    {sectionData.map((row, rowIndex) =>
+                      row.map((plant, plantIndex) => (
+                        <PlantWithToolTip
+                          key={`${plant.plantId}-${sectionName}-${rowIndex}-${plantIndex}`}
+                          plantId={plant.plantId}
+                          plantDate={plant.startDate || ""}
+                          cuttingType={plant.cutType || ""}
+                          hasLabel={plant.hasLabel || false}
+                          isEditing={isEditing}
+                          isPlantBg={false}
+                          isPlantBorder={false}
+                          onUpdate={(
                             newPlantId,
                             newDate,
                             newCuttingType,
-                            newHasLabel,
-                            true
-                          )
-                        }
-                      />
-                    ))
-                  )}
-                </CombinedPlantSectionWrapper>
-              );
-            })}
+                            newHasLabel
+                          ) =>
+                            handleUpdatePlantData(
+                              parseInt(
+                                sectionName.replace("combinedSection", ""),
+                                10
+                              ),
+                              rowIndex,
+                              plantIndex,
+                              newPlantId,
+                              newDate,
+                              newCuttingType,
+                              newHasLabel,
+                              true
+                            )
+                          }
+                        />
+                      ))
+                    )}
+                  </CombinedPlantSectionWrapper>
+                );
+              })}
+          </div>
         </div>
       </main>
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
         <SectionSizeSelector
           rows={rows}
           cols={cols}
+          potType={potType}
           setRows={setRows}
           setCols={setCols}
           planterType={planterType}
           setPlanterType={setPlanterType}
+          setPotType={setPotType}
           onSave={handleAddSection}
           onCancel={() => setIsModalOpen(false)}
         />
