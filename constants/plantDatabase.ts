@@ -8,6 +8,7 @@ export interface Plant {
   notes: string;
   relatedId: number[];
   reading: string;
+  link: string;
 }
 
 export const plants: Plant[] = [
@@ -20,7 +21,8 @@ export const plants: Plant[] = [
     genus: "",
     notes: "",
     relatedId: [],
-    reading: ""
+    reading: "",
+    link: ""
   },
   {
     id: 1,
@@ -31,7 +33,8 @@ export const plants: Plant[] = [
     genus: "グラプトペタルム属",
     notes: "",
     relatedId: [32, 33, 34],
-    reading: "オボロヅキ"
+    reading: "オボロヅキ",
+    link: ""
   },
   {
     id: 2,
@@ -42,7 +45,8 @@ export const plants: Plant[] = [
     genus: "グラプトベリア属",
     notes: "",
     relatedId: [],
-    reading: "ハツコイ"
+    reading: "ハツコイ",
+    link: ""
   },
   {
     id: 3,
@@ -53,7 +57,8 @@ export const plants: Plant[] = [
     genus: "ハオルチア属",
     notes: "",
     relatedId: [],
-    reading: "バンショウ ビャッコ"
+    reading: "バンショウ ビャッコ",
+    link: ""
   },
   {
     id: 4,
@@ -64,7 +69,8 @@ export const plants: Plant[] = [
     genus: "グラプトベリア属",
     notes: "",
     relatedId: [202, 203],
-    reading: "ハクヒョウ"
+    reading: "ハクヒョウ",
+    link: "/echeveria-battle-whitepeony-vs-lightice/"
   },
   {
     id: 5,
@@ -75,40 +81,44 @@ export const plants: Plant[] = [
     genus: "マンネングサ属",
     notes: "",
     relatedId: [],
-    reading: "フイリマルバマンネングサ"
+    reading: "フイリマルバマンネングサ",
+    link: ""
   },
   {
     id: 6,
     name: "青リンゴ",
     scientificName: "Blue Apple",
-    fileName: "blue-apple",
+    fileName: "",
     family: "ベンケイソウ科",
     genus: "セデベリア属",
     notes: "",
     relatedId: [7],
-    reading: "アオリンゴ"
+    reading: "アオリンゴ",
+    link: ""
   },
   {
     id: 7,
     name: "ブルーエルフ",
     scientificName: "Blue Elf",
-    fileName: "blue-elf",
+    fileName: "",
     family: "ベンケイソウ科",
     genus: "セデベリア属",
     notes: "",
     relatedId: [6],
-    reading: "ブルーエルフ"
+    reading: "ブルーエルフ",
+    link: ""
   },
   {
     id: 8,
     name: "火祭り",
-    scientificName: "Camp Fire",
-    fileName: "camp-fire",
+    scientificName: "Crassula capitella 'Camp Fire'",
+    fileName: "crassula-capitella-camp-fire",
     family: "ベンケイソウ科",
     genus: "クラッスラ属",
     notes: "",
-    relatedId: [],
-    reading: "ヒマツリ"
+    relatedId: [255],
+    reading: "ヒマツリ",
+    link: ""
   },
   {
     id: 9,
@@ -119,7 +129,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [],
-    reading: "ブラウンローズ"
+    reading: "ブラウンローズ",
+    link: ""
   },
   {
     id: 10,
@@ -130,7 +141,8 @@ export const plants: Plant[] = [
     genus: "セデベリア属",
     notes: "",
     relatedId: [],
-    reading: "ホワイトストーンクロプ"
+    reading: "ホワイトストーンクロプ",
+    link: ""
   },
   {
     id: 11,
@@ -141,7 +153,8 @@ export const plants: Plant[] = [
     genus: "グラプトペタルム属",
     notes: "",
     relatedId: [],
-    reading: "ビクターケーン"
+    reading: "ビクターケーン",
+    link: ""
   },
   {
     id: 12,
@@ -152,7 +165,8 @@ export const plants: Plant[] = [
     genus: "グラプトベリア属",
     notes: "",
     relatedId: [13, 200, 201],
-    reading: "ピンクルルビー"
+    reading: "ピンクルルビー",
+    link: ""
   },
   {
     id: 13,
@@ -163,7 +177,8 @@ export const plants: Plant[] = [
     genus: "グラプトベリア属",
     notes: "",
     relatedId: [12, 200, 201],
-    reading: "ピンクルビー"
+    reading: "ピンクルビー",
+    link: ""
   },
   {
     id: 14,
@@ -174,18 +189,20 @@ export const plants: Plant[] = [
     genus: "",
     notes: "",
     relatedId: [],
-    reading: "フェイスライクジェイド"
+    reading: "フェイスライクジェイド",
+    link: ""
   },
   {
     id: 15,
     name: "ピンクベリー",
     scientificName: "Canny Hinny",
-    fileName: "canny-hinny",
+    fileName: "pink-berry",
     family: "ベンケイソウ科",
     genus: "セダム属",
     notes: "",
     relatedId: [16],
-    reading: "ピンクベリー"
+    reading: "ピンクベリー",
+    link: ""
   },
   {
     id: 16,
@@ -196,7 +213,8 @@ export const plants: Plant[] = [
     genus: "セダム属",
     notes: "",
     relatedId: [15],
-    reading: "ピンクベリー"
+    reading: "ピンクベリー",
+    link: ""
   },
   {
     id: 17,
@@ -207,7 +225,8 @@ export const plants: Plant[] = [
     genus: "グラプトペタルム属",
     notes: "",
     relatedId: [],
-    reading: "ヒメシュウレイ"
+    reading: "ヒメシュウレイ",
+    link: ""
   },
   {
     id: 18,
@@ -218,7 +237,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [],
-    reading: "ピーチプリティ"
+    reading: "ピーチプリティ",
+    link: ""
   },
   {
     id: 19,
@@ -229,7 +249,8 @@ export const plants: Plant[] = [
     genus: "グラプトペタルム属",
     notes: "",
     relatedId: [],
-    reading: "パープルディライト"
+    reading: "パープルディライト",
+    link: ""
   },
   {
     id: 20,
@@ -240,7 +261,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [],
-    reading: "ヘラクレス"
+    reading: "ヘラクレス",
+    link: ""
   },
   {
     id: 21,
@@ -251,7 +273,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [231],
-    reading: "プロリフィカ"
+    reading: "プロリフィカ",
+    link: ""
   },
   {
     id: 22,
@@ -262,7 +285,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [],
-    reading: "ブルーライト"
+    reading: "ブルーライト",
+    link: ""
   },
   {
     id: 23,
@@ -273,7 +297,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [],
-    reading: "ハウォルヤ"
+    reading: "ハウォルヤ",
+    link: ""
   },
   {
     id: 24,
@@ -284,7 +309,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [],
-    reading: "フロリディティ"
+    reading: "フロリディティ",
+    link: ""
   },
   {
     id: 25,
@@ -295,7 +321,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [],
-    reading: "ラウリンゼ"
+    reading: "ラウリンゼ",
+    link: "/laurinza-revelation-2/"
   },
   {
     id: 26,
@@ -306,7 +333,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [],
-    reading: "セイバー"
+    reading: "セイバー",
+    link: "/edum-sabre-charm-care-guide/"
   },
   {
     id: 27,
@@ -317,7 +345,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [],
-    reading: "ハナウララ"
+    reading: "ハナウララ",
+    link: ""
   },
   {
     id: 28,
@@ -328,7 +357,8 @@ export const plants: Plant[] = [
     genus: "セダム属",
     notes: "",
     relatedId: [],
-    reading: "パープルヘイズ"
+    reading: "パープルヘイズ",
+    link: ""
   },
   {
     id: 29,
@@ -339,7 +369,8 @@ export const plants: Plant[] = [
     genus: "グラプトペタルム属",
     notes: "",
     relatedId: [],
-    reading: "ペンタンドルム"
+    reading: "ペンタンドルム",
+    link: ""
   },
   {
     id: 30,
@@ -350,7 +381,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [],
-    reading: "ブラッククイーン"
+    reading: "ブラッククイーン",
+    link: "/blackqueen-beauty-care/"
   },
   {
     id: 31,
@@ -361,7 +393,8 @@ export const plants: Plant[] = [
     genus: "クラッスラ属",
     notes: "",
     relatedId: [],
-    reading: "ハンベルティー"
+    reading: "ハンベルティー",
+    link: ""
   },
   {
     id: 32,
@@ -372,7 +405,8 @@ export const plants: Plant[] = [
     genus: "グラプトペタルム属",
     notes: "",
     relatedId: [1, 33, 34],
-    reading: "オボロヅキ"
+    reading: "オボロヅキ",
+    link: ""
   },
   {
     id: 33,
@@ -383,7 +417,8 @@ export const plants: Plant[] = [
     genus: "グラプトペタルム属",
     notes: "",
     relatedId: [1, 32, 34],
-    reading: "セキレンカ"
+    reading: "セキレンカ",
+    link: ""
   },
   {
     id: 34,
@@ -394,7 +429,8 @@ export const plants: Plant[] = [
     genus: "グラプトペタルム属",
     notes: "",
     relatedId: [1, 32, 33],
-    reading: "パラグアイエンセ"
+    reading: "パラグアイエンセ",
+    link: ""
   },
   {
     id: 35,
@@ -405,7 +441,8 @@ export const plants: Plant[] = [
     genus: "シノクラッスラ属",
     notes: "",
     relatedId: [],
-    reading: "インディカ"
+    reading: "インディカ",
+    link: ""
   },
   {
     id: 36,
@@ -416,7 +453,8 @@ export const plants: Plant[] = [
     genus: "クラッスラ属",
     notes: "",
     relatedId: [37, 38, 39],
-    reading: "ゴーラム"
+    reading: "ゴーラム",
+    link: ""
   },
   {
     id: 37,
@@ -427,7 +465,8 @@ export const plants: Plant[] = [
     genus: "クラッスラ属",
     notes: "",
     relatedId: [36, 38, 39],
-    reading: "ウチュウノキ"
+    reading: "ウチュウノキ",
+    link: ""
   },
   {
     id: 38,
@@ -438,7 +477,8 @@ export const plants: Plant[] = [
     genus: "クラッスラ属",
     notes: "",
     relatedId: [36, 37, 39],
-    reading: "ゴラム"
+    reading: "ゴラム",
+    link: ""
   },
   {
     id: 39,
@@ -449,7 +489,8 @@ export const plants: Plant[] = [
     genus: "クラッスラ属",
     notes: "",
     relatedId: [36, 37, 38],
-    reading: "オバータ・ゴーラム"
+    reading: "オバータ・ゴーラム",
+    link: ""
   },
   {
     id: 40,
@@ -460,7 +501,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "セトーサ E. setosa と乙女 E. amoena との交配種。E. 'Ron Evans' と同種。",
     relatedId: [],
-    reading: "エメラルドリップル"
+    reading: "エメラルドリップル",
+    link: ""
   },
   {
     id: 41,
@@ -471,7 +513,8 @@ export const plants: Plant[] = [
     genus: "パキベリア属",
     notes: "",
     relatedId: [42, 43],
-    reading: "シモノアシタ"
+    reading: "シモノアシタ",
+    link: ""
   },
   {
     id: 42,
@@ -482,7 +525,8 @@ export const plants: Plant[] = [
     genus: "パキベリア属",
     notes: "",
     relatedId: [41, 43],
-    reading: " パウダーパフ"
+    reading: "パウダーパフ",
+    link: ""
   },
   {
     id: 43,
@@ -493,7 +537,8 @@ export const plants: Plant[] = [
     genus: "パキベリア属",
     notes: "",
     relatedId: [41, 42],
-    reading: "エキゾチカ"
+    reading: "エキゾチカ",
+    link: ""
   },
   {
     id: 44,
@@ -504,7 +549,8 @@ export const plants: Plant[] = [
     genus: "アエオニウム属",
     notes: "",
     relatedId: [],
-    reading: "アイゾメニシキ"
+    reading: "アイゾメニシキ",
+    link: ""
   },
   {
     id: 45,
@@ -515,7 +561,8 @@ export const plants: Plant[] = [
     genus: "セダム属",
     notes: "",
     relatedId: [46, 47, 48],
-    reading: "オトメゴコロ"
+    reading: "オトメゴコロ",
+    link: "/love-and-romance-in-the-world-of-succulents/"
   },
   {
     id: 46,
@@ -526,7 +573,8 @@ export const plants: Plant[] = [
     genus: "セダム属",
     notes: "",
     relatedId: [45, 47, 48],
-    reading: "アツバベンケイ"
+    reading: "アツバベンケイ",
+    link: "/love-and-romance-in-the-world-of-succulents/"
   },
   {
     id: 47,
@@ -537,7 +585,8 @@ export const plants: Plant[] = [
     genus: "セダム属",
     notes: "",
     relatedId: [45, 46, 48],
-    reading: "パキフィラム"
+    reading: "パキフィラム",
+    link: "/love-and-romance-in-the-world-of-succulents/"
   },
   {
     id: 48,
@@ -548,7 +597,8 @@ export const plants: Plant[] = [
     genus: "セダム属",
     notes: "",
     relatedId: [45, 46, 47],
-    reading: "アツバベンケイ"
+    reading: "アツバベンケイ",
+    link: "/love-and-romance-in-the-world-of-succulents/"
   },
   {
     id: 49,
@@ -559,7 +609,8 @@ export const plants: Plant[] = [
     genus: "セダム属",
     notes: "",
     relatedId: [50, 51, 52],
-    reading: "オウレイ"
+    reading: "オウレイ",
+    link: ""
   },
   {
     id: 50,
@@ -570,7 +621,8 @@ export const plants: Plant[] = [
     genus: "セダム属",
     notes: "",
     relatedId: [49, 51, 52],
-    reading: "ツキノオウジ"
+    reading: "ツキノオウジ",
+    link: ""
   },
   {
     id: 51,
@@ -581,7 +633,8 @@ export const plants: Plant[] = [
     genus: "セダム属",
     notes: "",
     relatedId: [49, 50, 52],
-    reading: "オウレイ"
+    reading: "オウレイ",
+    link: ""
   },
   {
     id: 52,
@@ -592,7 +645,8 @@ export const plants: Plant[] = [
     genus: "セダム属",
     notes: "",
     relatedId: [49, 50, 51],
-    reading: "ゴールデングロー"
+    reading: "ゴールデングロー",
+    link: ""
   },
   {
     id: 53,
@@ -603,7 +657,8 @@ export const plants: Plant[] = [
     genus: "クラッスラ属",
     notes: "",
     relatedId: [54, 55, 56, 57, 58, 59],
-    reading: "カゲツ"
+    reading: "カゲツ",
+    link: ""
   },
   {
     id: 54,
@@ -614,7 +669,8 @@ export const plants: Plant[] = [
     genus: "クラッスラ属",
     notes: "",
     relatedId: [53, 55, 56, 57, 58, 59],
-    reading: "カネノナルキ"
+    reading: "カネノナルキ",
+    link: ""
   },
   {
     id: 55,
@@ -625,7 +681,8 @@ export const plants: Plant[] = [
     genus: "クラッスラ属",
     notes: "",
     relatedId: [53, 54, 56, 57, 58, 59],
-    reading: "カネノナルキ"
+    reading: "カネノナルキ",
+    link: ""
   },
   {
     id: 56,
@@ -636,7 +693,8 @@ export const plants: Plant[] = [
     genus: "クラッスラ属",
     notes: "",
     relatedId: [53, 54, 55, 57, 58, 59],
-    reading: "ナリキンソウ"
+    reading: "ナリキンソウ",
+    link: ""
   },
   {
     id: 57,
@@ -647,7 +705,8 @@ export const plants: Plant[] = [
     genus: "クラッスラ属",
     notes: "",
     relatedId: [53, 54, 55, 56, 58, 59],
-    reading: "フチベニベンケイ"
+    reading: "フチベニベンケイ",
+    link: ""
   },
   {
     id: 58,
@@ -658,7 +717,8 @@ export const plants: Plant[] = [
     genus: "クラッスラ属",
     notes: "",
     relatedId: [53, 54, 55, 56, 57, 59],
-    reading: "ベニカゲツ"
+    reading: "ベニカゲツ",
+    link: ""
   },
   {
     id: 59,
@@ -669,7 +729,8 @@ export const plants: Plant[] = [
     genus: "クラッスラ属",
     notes: "",
     relatedId: [53, 54, 55, 56, 57, 58],
-    reading: "タンチョウ"
+    reading: "タンチョウ",
+    link: ""
   },
   {
     id: 60,
@@ -680,7 +741,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [],
-    reading: "イーサー"
+    reading: "イーサー",
+    link: ""
   },
   {
     id: 61,
@@ -691,7 +753,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [],
-    reading: "アマビレ"
+    reading: "アマビレ",
+    link: ""
   },
   {
     id: 62,
@@ -702,7 +765,8 @@ export const plants: Plant[] = [
     genus: "グラプトベリア属",
     notes: "",
     relatedId: [],
-    reading: "マーガレットレッピン"
+    reading: "マーガレットレッピン",
+    link: ""
   },
   {
     id: 63,
@@ -713,7 +777,8 @@ export const plants: Plant[] = [
     genus: "パキフィツム属",
     notes: "",
     relatedId: [],
-    reading: "シレイデン"
+    reading: "シレイデン",
+    link: ""
   },
   {
     id: 64,
@@ -724,7 +789,8 @@ export const plants: Plant[] = [
     genus: "ギムノカリキウム属",
     notes: "",
     relatedId: [],
-    reading: "フイリニグラム"
+    reading: "フイリニグラム",
+    link: "/calcareum-nigrum-cultivation-features/"
   },
   {
     id: 65,
@@ -735,7 +801,8 @@ export const plants: Plant[] = [
     genus: "ダドレア属",
     notes: "",
     relatedId: [],
-    reading: "アンソニー"
+    reading: "アンソニー",
+    link: ""
   },
   {
     id: 66,
@@ -746,7 +813,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [],
-    reading: "ダークムーン"
+    reading: "ダークムーン",
+    link: ""
   },
   {
     id: 67,
@@ -757,7 +825,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [68, 69, 70, 71],
-    reading: "ヤマトニシキ"
+    reading: "ヤマトニシキ",
+    link: "/yamato-nishiki-care/"
   },
   {
     id: 68,
@@ -768,7 +837,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [67, 69, 70, 71],
-    reading: "カカン"
+    reading: "カカン",
+    link: "/yamato-nishiki-care/"
   },
   {
     id: 69,
@@ -779,7 +849,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [67, 68, 70, 71],
-    reading: "パープソルム"
+    reading: "パープソルム",
+    link: "/yamato-nishiki-care/"
   },
   {
     id: 70,
@@ -790,7 +861,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [67, 68, 69, 71],
-    reading: "プルプソルム"
+    reading: "プルプソルム",
+    link: "/yamato-nishiki-care/"
   },
   {
     id: 71,
@@ -801,7 +873,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [67, 68, 69, 70],
-    reading: "パプルソラム"
+    reading: "パプルソラム",
+    link: "/yamato-nishiki-care/"
   },
   {
     id: 72,
@@ -812,7 +885,8 @@ export const plants: Plant[] = [
     genus: "グラプトベリア属",
     notes: "",
     relatedId: [],
-    reading: "オリビア"
+    reading: "オリビア",
+    link: ""
   },
   {
     id: 73,
@@ -823,7 +897,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [74],
-    reading: "オンスロー"
+    reading: "オンスロー",
+    link: ""
   },
   {
     id: 74,
@@ -834,7 +909,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [73],
-    reading: "オンスロウ"
+    reading: "オンスロウ",
+    link: ""
   },
   {
     id: 75,
@@ -845,7 +921,8 @@ export const plants: Plant[] = [
     genus: "パキフィツム属",
     notes: "",
     relatedId: [76, 77, 78],
-    reading: "ゲッカビジン"
+    reading: "ゲッカビジン",
+    link: ""
   },
   {
     id: 76,
@@ -856,7 +933,8 @@ export const plants: Plant[] = [
     genus: "パキフィツム属",
     notes: "",
     relatedId: [75, 77, 78],
-    reading: "ゲッカビジン"
+    reading: "ゲッカビジン",
+    link: ""
   },
   {
     id: 77,
@@ -867,7 +945,8 @@ export const plants: Plant[] = [
     genus: "パキフィツム属",
     notes: "",
     relatedId: [75, 76, 78],
-    reading: "ミカエリビジン"
+    reading: "ミカエリビジン",
+    link: ""
   },
   {
     id: 78,
@@ -878,7 +957,8 @@ export const plants: Plant[] = [
     genus: "パキフィツム属",
     notes: "",
     relatedId: [75, 76, 77],
-    reading: "ウォルファビジン"
+    reading: "ウォルファビジン",
+    link: ""
   },
   {
     id: 79,
@@ -889,7 +969,8 @@ export const plants: Plant[] = [
     genus: "セダム属",
     notes: "",
     relatedId: [80],
-    reading: "クラバツム"
+    reading: "クラバツム",
+    link: ""
   },
   {
     id: 80,
@@ -900,7 +981,8 @@ export const plants: Plant[] = [
     genus: "セダム属",
     notes: "",
     relatedId: [79],
-    reading: "ラウム"
+    reading: "ラウム",
+    link: ""
   },
   {
     id: 81,
@@ -911,7 +993,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [82, 83, 84, 85, 86, 87],
-    reading: "ムーンガドニス"
+    reading: "ムーンガドニス",
+    link: ""
   },
   {
     id: 82,
@@ -922,7 +1005,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [81, 83, 84, 85, 86, 87],
-    reading: "エスター"
+    reading: "エスター",
+    link: ""
   },
   {
     id: 83,
@@ -933,7 +1017,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [81, 82, 84, 85, 86, 87],
-    reading: "ミワクノツキ"
+    reading: "ミワクノツキ",
+    link: ""
   },
   {
     id: 84,
@@ -944,7 +1029,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [81, 82, 83, 85, 86, 87],
-    reading: "オリヒメ"
+    reading: "オリヒメ",
+    link: ""
   },
   {
     id: 85,
@@ -955,7 +1041,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [81, 82, 83, 84, 86, 87],
-    reading: "ゲッコウメガミ"
+    reading: "ゲッコウメガミ",
+    link: ""
   },
   {
     id: 86,
@@ -966,7 +1053,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [81, 82, 83, 84, 85, 87],
-    reading: "エッシャー"
+    reading: "エッシャー",
+    link: ""
   },
   {
     id: 87,
@@ -977,7 +1065,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [81, 82, 83, 84, 85, 86],
-    reading: "ムーンガッデス"
+    reading: "ムーンガッデス",
+    link: ""
   },
   {
     id: 88,
@@ -988,7 +1077,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [89],
-    reading: "キュービックフロスト"
+    reading: "キュービックフロスト",
+    link: ""
   },
   {
     id: 89,
@@ -999,7 +1089,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [88],
-    reading: "キュービックフロスティ"
+    reading: "キュービックフロスティ",
+    link: ""
   },
   {
     id: 90,
@@ -1010,18 +1101,20 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [91],
-    reading: "クラウディア"
+    reading: "クラウディア",
+    link: ""
   },
   {
     id: 91,
     name: "クローディア",
     scientificName: "Claudia",
-    fileName: "クローディア",
+    fileName: "claudia",
     family: "ベンケイソウ科",
     genus: "エケベリア属",
     notes: "",
     relatedId: [90],
-    reading: "クローディア"
+    reading: "クローディア",
+    link: ""
   },
   {
     id: 92,
@@ -1032,7 +1125,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [93, 94, 95],
-    reading: "サブセシリス"
+    reading: "サブセシリス",
+    link: ""
   },
   {
     id: 93,
@@ -1043,7 +1137,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [92, 94, 95],
-    reading: "ピーコッキー"
+    reading: "ピーコッキー",
+    link: ""
   },
   {
     id: 94,
@@ -1054,7 +1149,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [92, 93, 95],
-    reading: "ヨウロウ"
+    reading: "ヨウロウ",
+    link: ""
   },
   {
     id: 95,
@@ -1065,7 +1161,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [92, 93, 94],
-    reading: "ピーコッキー・サブセシリス"
+    reading: "ピーコッキー・サブセシリス",
+    link: ""
   },
   {
     id: 96,
@@ -1076,7 +1173,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [],
-    reading: "ブルーアップル"
+    reading: "ブルーアップル",
+    link: ""
   },
   {
     id: 97,
@@ -1087,7 +1185,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [],
-    reading: "ヌダ"
+    reading: "ヌダ",
+    link: ""
   },
   {
     id: 98,
@@ -1098,7 +1197,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [99],
-    reading: "シチフクビニ"
+    reading: "シチフクビニ",
+    link: ""
   },
   {
     id: 99,
@@ -1109,7 +1209,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [98],
-    reading: "シチフクミニ"
+    reading: "シチフクミニ",
+    link: ""
   },
   {
     id: 100,
@@ -1120,7 +1221,8 @@ export const plants: Plant[] = [
     genus: "セダム属",
     notes: "",
     relatedId: [101, 102, 103],
-    reading: "アラタマツヅリ"
+    reading: "アラタマツヅリ",
+    link: ""
   },
   {
     id: 101,
@@ -1131,7 +1233,8 @@ export const plants: Plant[] = [
     genus: "セダム属",
     notes: "",
     relatedId: [100, 102, 103],
-    reading: "ビアーホップ"
+    reading: "ビアーホップ",
+    link: ""
   },
   {
     id: 102,
@@ -1142,7 +1245,8 @@ export const plants: Plant[] = [
     genus: "セダム属",
     notes: "",
     relatedId: [100, 101, 103],
-    reading: "ヒメタマツヅリ"
+    reading: "ヒメタマツヅリ",
+    link: ""
   },
   {
     id: 103,
@@ -1153,7 +1257,8 @@ export const plants: Plant[] = [
     genus: "セダム属",
     notes: "",
     relatedId: [100, 101, 102],
-    reading: "ウサギノカクレンボ"
+    reading: "ウサギノカクレンボ",
+    link: ""
   },
   {
     id: 104,
@@ -1164,7 +1269,8 @@ export const plants: Plant[] = [
     genus: "カランコエ属",
     notes: "",
     relatedId: [105, 106, 107, 108, 109],
-    reading: "テンニンノマイ"
+    reading: "テンニンノマイ",
+    link: "/senningarden-tips/"
   },
   {
     id: 105,
@@ -1175,7 +1281,8 @@ export const plants: Plant[] = [
     genus: "カランコエ属",
     notes: "",
     relatedId: [104, 106, 107, 108, 109],
-    reading: "センニンノマイ"
+    reading: "センニンノマイ",
+    link: "/senningarden-tips/"
   },
   {
     id: 106,
@@ -1186,7 +1293,8 @@ export const plants: Plant[] = [
     genus: "カランコエ属",
     notes: "",
     relatedId: [104, 105, 107, 108, 109],
-    reading: "オルギアリス"
+    reading: "オルギアリス",
+    link: "/senningarden-tips/"
   },
   {
     id: 107,
@@ -1197,7 +1305,8 @@ export const plants: Plant[] = [
     genus: "カランコエ属",
     notes: "",
     relatedId: [104, 105, 106, 108, 109],
-    reading: "キンノタマゴ"
+    reading: "キンノタマゴ",
+    link: "/senningarden-tips/"
   },
   {
     id: 108,
@@ -1208,7 +1317,8 @@ export const plants: Plant[] = [
     genus: "カランコエ属",
     notes: "",
     relatedId: [104, 105, 106, 107, 109],
-    reading: "ギンノタマゴ"
+    reading: "ギンノタマゴ",
+    link: "/senningarden-tips/"
   },
   {
     id: 109,
@@ -1219,7 +1329,8 @@ export const plants: Plant[] = [
     genus: "カランコエ属",
     notes: "",
     relatedId: [104, 105, 106, 107, 108],
-    reading: "センニンノオウギ"
+    reading: "センニンノオウギ",
+    link: "/senningarden-tips/"
   },
   {
     id: 110,
@@ -1230,7 +1341,8 @@ export const plants: Plant[] = [
     genus: "セダム属",
     notes: "",
     relatedId: [111, 112],
-    reading: "サンライズマム"
+    reading: "サンライズマム",
+    link: ""
   },
   {
     id: 111,
@@ -1241,7 +1353,8 @@ export const plants: Plant[] = [
     genus: "セダム属",
     notes: "",
     relatedId: [110, 112],
-    reading: "イエロームーン"
+    reading: "イエロームーン",
+    link: ""
   },
   {
     id: 112,
@@ -1252,7 +1365,8 @@ export const plants: Plant[] = [
     genus: "セダム属",
     notes: "",
     relatedId: [110, 111],
-    reading: "シンタツタ"
+    reading: "シンタツタ",
+    link: ""
   },
   {
     id: 113,
@@ -1263,7 +1377,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [114, 115],
-    reading: "シャビアナ"
+    reading: "シャビアナ",
+    link: "/kalanchoe-tomentosa-beauty-and-care-guide/"
   },
   {
     id: 114,
@@ -1274,7 +1389,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [113, 115],
-    reading: "ギオンノマイ"
+    reading: "ギオンノマイ",
+    link: "/kalanchoe-tomentosa-beauty-and-care-guide/"
   },
   {
     id: 115,
@@ -1285,7 +1401,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [113, 114],
-    reading: "サウィアナ"
+    reading: "サウィアナ",
+    link: "/kalanchoe-tomentosa-beauty-and-care-guide/"
   },
   {
     id: 116,
@@ -1296,7 +1413,8 @@ export const plants: Plant[] = [
     genus: "グラプトベリア属",
     notes: "",
     relatedId: [],
-    reading: "シルバースター"
+    reading: "シルバースター",
+    link: ""
   },
   {
     id: 117,
@@ -1307,7 +1425,8 @@ export const plants: Plant[] = [
     genus: "グラプトセダム属",
     notes: "",
     relatedId: [118],
-    reading: "シュウレイ"
+    reading: "シュウレイ",
+    link: ""
   },
   {
     id: 118,
@@ -1318,7 +1437,8 @@ export const plants: Plant[] = [
     genus: "グラプトセダム属",
     notes: "",
     relatedId: [117],
-    reading: "フランケスコバルディ"
+    reading: "フランケスコバルディ",
+    link: ""
   },
   {
     id: 119,
@@ -1329,7 +1449,8 @@ export const plants: Plant[] = [
     genus: "センペルビブム属",
     notes: "",
     relatedId: [],
-    reading: "シャンハイローズ"
+    reading: "シャンハイローズ",
+    link: ""
   },
   {
     id: 120,
@@ -1340,7 +1461,8 @@ export const plants: Plant[] = [
     genus: "センペルビブム属",
     notes: "",
     relatedId: [],
-    reading: "シャンハイローズ"
+    reading: "シャンハイローズ",
+    link: ""
   },
   {
     id: 121,
@@ -1351,7 +1473,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [],
-    reading: "ジャシリー"
+    reading: "ジャシリー",
+    link: ""
   },
   {
     id: 122,
@@ -1362,7 +1485,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [123],
-    reading: "ゴールデングロウ"
+    reading: "ゴールデングロウ",
+    link: ""
   },
   {
     id: 123,
@@ -1373,7 +1497,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [122],
-    reading: "ゴールデングロー"
+    reading: "ゴールデングロー",
+    link: ""
   },
   {
     id: 124,
@@ -1384,7 +1509,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [],
-    reading: "ジョニーウォーカー"
+    reading: "ジョニーウォーカー",
+    link: ""
   },
   {
     id: 125,
@@ -1395,7 +1521,8 @@ export const plants: Plant[] = [
     genus: "セダム属",
     notes: "",
     relatedId: [],
-    reading: "コイゴコロ"
+    reading: "コイゴコロ",
+    link: "/love-and-romance-in-the-world-of-succulents/"
   },
   {
     id: 126,
@@ -1406,7 +1533,8 @@ export const plants: Plant[] = [
     genus: "グラプトベリア属",
     notes: "",
     relatedId: [127, 128],
-    reading: "グリムワン"
+    reading: "グリムワン",
+    link: "/grimone-artful-leaves/"
   },
   {
     id: 127,
@@ -1417,7 +1545,8 @@ export const plants: Plant[] = [
     genus: "グラプトベリア属",
     notes: "",
     relatedId: [126, 128],
-    reading: "エイグリーワン"
+    reading: "エイグリーワン",
+    link: "/grimone-artful-leaves/"
   },
   {
     id: 128,
@@ -1428,7 +1557,8 @@ export const plants: Plant[] = [
     genus: "グラプトベリア属",
     notes: "",
     relatedId: [126, 127],
-    reading: "エイグリムワン"
+    reading: "エイグリムワン",
+    link: "/grimone-artful-leaves/"
   },
   {
     id: 129,
@@ -1439,7 +1569,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [130],
-    reading: "ブラックローズ"
+    reading: "ブラックローズ",
+    link: ""
   },
   {
     id: 130,
@@ -1450,7 +1581,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [129],
-    reading: "クロバラ"
+    reading: "クロバラ",
+    link: ""
   },
   {
     id: 131,
@@ -1461,7 +1593,8 @@ export const plants: Plant[] = [
     genus: "オロスタキス属",
     notes: "",
     relatedId: [132],
-    reading: "コモチレンゲ"
+    reading: "コモチレンゲ",
+    link: ""
   },
   {
     id: 132,
@@ -1472,7 +1605,8 @@ export const plants: Plant[] = [
     genus: "オロスタキス属",
     notes: "",
     relatedId: [131],
-    reading: "コモチレンゲ"
+    reading: "コモチレンゲ",
+    link: ""
   },
   {
     id: 133,
@@ -1483,7 +1617,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [134],
-    reading: "ティッピー"
+    reading: "ティッピー",
+    link: ""
   },
   {
     id: 134,
@@ -1494,7 +1629,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [133],
-    reading: "テイピ"
+    reading: "テイピ",
+    link: ""
   },
   {
     id: 135,
@@ -1505,7 +1641,8 @@ export const plants: Plant[] = [
     genus: "グラプトベリア属",
     notes: "",
     relatedId: [136, 137],
-    reading: "デビー"
+    reading: "デビー",
+    link: ""
   },
   {
     id: 136,
@@ -1516,7 +1653,8 @@ export const plants: Plant[] = [
     genus: "グラプトベリア属",
     notes: "",
     relatedId: [135, 137],
-    reading: "パープルクイーン"
+    reading: "パープルクイーン",
+    link: ""
   },
   {
     id: 137,
@@ -1527,7 +1665,8 @@ export const plants: Plant[] = [
     genus: "グラプトベリア属",
     notes: "",
     relatedId: [135, 136],
-    reading: "グラプトベリア・デビー"
+    reading: "グラプトベリア・デビー",
+    link: ""
   },
   {
     id: 138,
@@ -1538,7 +1677,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [139, 140, 141, 142, 143, 144],
-    reading: "トップシータービー"
+    reading: "トップシータービー",
+    link: ""
   },
   {
     id: 139,
@@ -1549,7 +1689,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [138, 140, 141, 142, 143, 144],
-    reading: "トップスプレンダー"
+    reading: "トップスプレンダー",
+    link: ""
   },
   {
     id: 140,
@@ -1560,7 +1701,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [138, 139, 141, 142, 143, 144],
-    reading: "トプシータービー"
+    reading: "トプシータービー",
+    link: ""
   },
   {
     id: 141,
@@ -1571,7 +1713,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [138, 139, 140, 142, 143, 144],
-    reading: "ルンヨニー"
+    reading: "ルンヨニー",
+    link: ""
   },
   {
     id: 142,
@@ -1582,7 +1725,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [138, 139, 140, 141, 143, 144],
-    reading: "トプシーツルビー"
+    reading: "トプシーツルビー",
+    link: ""
   },
   {
     id: 143,
@@ -1593,7 +1737,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [138, 139, 140, 141, 142, 144],
-    reading: "トプシーツルヴィ"
+    reading: "トプシーツルヴィ",
+    link: ""
   },
   {
     id: 144,
@@ -1604,7 +1749,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [138, 139, 140, 141, 142, 143],
-    reading: "トプシー・ターヴィー"
+    reading: "トプシー・ターヴィー",
+    link: ""
   },
   {
     id: 145,
@@ -1615,7 +1761,8 @@ export const plants: Plant[] = [
     genus: "グラプトペタルム属",
     notes: "",
     relatedId: [146, 147],
-    reading: "ダルマシュウレイ"
+    reading: "ダルマシュウレイ",
+    link: ""
   },
   {
     id: 146,
@@ -1626,7 +1773,8 @@ export const plants: Plant[] = [
     genus: "グラプトペタルム属",
     notes: "",
     relatedId: [145, 147],
-    reading: "ダルマシュウレイ"
+    reading: "ダルマシュウレイ",
+    link: ""
   },
   {
     id: 147,
@@ -1637,7 +1785,8 @@ export const plants: Plant[] = [
     genus: "グラプトペタルム属",
     notes: "",
     relatedId: [145, 146],
-    reading: "ダルマシュウレイ"
+    reading: "ダルマシュウレイ",
+    link: ""
   },
   {
     id: 148,
@@ -1648,7 +1797,8 @@ export const plants: Plant[] = [
     genus: "セダム属",
     notes: "",
     relatedId: [149],
-    reading: "ニジノタマ"
+    reading: "ニジノタマ",
+    link: ""
   },
   {
     id: 149,
@@ -1659,7 +1809,8 @@ export const plants: Plant[] = [
     genus: "セダム属",
     notes: "",
     relatedId: [148],
-    reading: "ラブロティングダム"
+    reading: "ラブロティングダム",
+    link: ""
   },
   {
     id: 150,
@@ -1670,7 +1821,8 @@ export const plants: Plant[] = [
     genus: "オロスタキス属",
     notes: "",
     relatedId: [],
-    reading: "ツメレンゲ"
+    reading: "ツメレンゲ",
+    link: "/sedum-lineare-male-perennial/"
   },
   {
     id: 151,
@@ -1681,7 +1833,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [152],
-    reading: "ダスティローズ"
+    reading: "ダスティローズ",
+    link: ""
   },
   {
     id: 152,
@@ -1692,7 +1845,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [151],
-    reading: "ダスキーローズ"
+    reading: "ダスキーローズ",
+    link: ""
   },
   {
     id: 153,
@@ -1703,7 +1857,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [],
-    reading: "レズリー"
+    reading: "レズリー",
+    link: ""
   },
   {
     id: 154,
@@ -1714,7 +1869,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [155, 156, 157],
-    reading: "ラウ030"
+    reading: "ラウ030",
+    link: ""
   },
   {
     id: 155,
@@ -1725,7 +1881,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [154, 156, 157],
-    reading: "サブコリーボサ"
+    reading: "サブコリーボサ",
+    link: ""
   },
   {
     id: 156,
@@ -1736,7 +1893,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [154, 155, 157],
-    reading: "サブコリンボサ"
+    reading: "サブコリンボサ",
+    link: ""
   },
   {
     id: 157,
@@ -1747,7 +1905,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [154, 155, 156],
-    reading: "エクスパルチカ"
+    reading: "エクスパルチカ",
+    link: ""
   },
   {
     id: 158,
@@ -1758,7 +1917,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [],
-    reading: "ラブリーローズ"
+    reading: "ラブリーローズ",
+    link: "/echeveria-lovely-rose-care-guide/"
   },
   {
     id: 159,
@@ -1769,7 +1929,8 @@ export const plants: Plant[] = [
     genus: "グラプトセダム属",
     notes: "",
     relatedId: [],
-    reading: "リトルビューティ"
+    reading: "リトルビューティ",
+    link: ""
   },
   {
     id: 160,
@@ -1780,7 +1941,8 @@ export const plants: Plant[] = [
     genus: "ハオルチア属",
     notes: "",
     relatedId: [],
-    reading: "マンドリースクラール"
+    reading: "マンドリースクラール",
+    link: ""
   },
   {
     id: 161,
@@ -1791,7 +1953,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [],
-    reading: "ヤマトビニ"
+    reading: "ヤマトビニ",
+    link: "/yamato-bini/"
   },
   {
     id: 162,
@@ -1802,7 +1965,8 @@ export const plants: Plant[] = [
     genus: "セデベリア属",
     notes: "",
     relatedId: [163, 164],
-    reading: "レディジア"
+    reading: "レディジア",
+    link: ""
   },
   {
     id: 163,
@@ -1813,7 +1977,8 @@ export const plants: Plant[] = [
     genus: "セデベリア属",
     notes: "",
     relatedId: [162, 164],
-    reading: "レティジア"
+    reading: "レティジア",
+    link: ""
   },
   {
     id: 164,
@@ -1824,7 +1989,8 @@ export const plants: Plant[] = [
     genus: "セデベリア属",
     notes: "",
     relatedId: [162, 163],
-    reading: "マンゲキョウ"
+    reading: "マンゲキョウ",
+    link: ""
   },
   {
     id: 165,
@@ -1835,7 +2001,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [],
-    reading: "レッドベルベット"
+    reading: "レッドベルベット",
+    link: ""
   },
   {
     id: 166,
@@ -1846,7 +2013,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [167],
-    reading: "ラウリンゼ"
+    reading: "ラウリンゼ",
+    link: ""
   },
   {
     id: 167,
@@ -1857,7 +2025,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [166],
-    reading: "ラウィーリンゼ"
+    reading: "ラウィーリンゼ",
+    link: ""
   },
   {
     id: 168,
@@ -1868,7 +2037,8 @@ export const plants: Plant[] = [
     genus: "クラッスラ属",
     notes: "",
     relatedId: [169, 170],
-    reading: "ロゲルシー"
+    reading: "ロゲルシー",
+    link: ""
   },
   {
     id: 169,
@@ -1879,7 +2049,8 @@ export const plants: Plant[] = [
     genus: "クラッスラ属",
     notes: "",
     relatedId: [168, 170],
-    reading: "ロゲルシーフイリ"
+    reading: "ロゲルシーフイリ",
+    link: ""
   },
   {
     id: 170,
@@ -1890,7 +2061,8 @@ export const plants: Plant[] = [
     genus: "クラッスラ属",
     notes: "",
     relatedId: [168, 169],
-    reading: "ロゲルシーフイリ"
+    reading: "ロゲルシーフイリ",
+    link: ""
   },
   {
     id: 171,
@@ -1901,7 +2073,8 @@ export const plants: Plant[] = [
     genus: "セダム属",
     notes: "",
     relatedId: [],
-    reading: "レッドベリー"
+    reading: "レッドベリー",
+    link: ""
   },
   {
     id: 172,
@@ -1912,7 +2085,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [],
-    reading: "モラン"
+    reading: "モラン",
+    link: ""
   },
   {
     id: 173,
@@ -1923,7 +2097,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [],
-    reading: "マリリン"
+    reading: "マリリン",
+    link: ""
   },
   {
     id: 174,
@@ -1934,7 +2109,8 @@ export const plants: Plant[] = [
     genus: "グラプトペタルム属",
     notes: "",
     relatedId: [],
-    reading: "マクドガリー"
+    reading: "マクドガリー",
+    link: ""
   },
   {
     id: 175,
@@ -1945,7 +2121,8 @@ export const plants: Plant[] = [
     genus: "クラッスラ属",
     notes: "",
     relatedId: [176, 177],
-    reading: "モミジマツリ"
+    reading: "モミジマツリ",
+    link: ""
   },
   {
     id: 176,
@@ -1956,7 +2133,8 @@ export const plants: Plant[] = [
     genus: "クラッスラ属",
     notes: "",
     relatedId: [175, 177],
-    reading: "モミジマツリ"
+    reading: "モミジマツリ",
+    link: ""
   },
   {
     id: 177,
@@ -1967,7 +2145,8 @@ export const plants: Plant[] = [
     genus: "クラッスラ属",
     notes: "",
     relatedId: [175, 176],
-    reading: "モミジマツリ"
+    reading: "モミジマツリ",
+    link: ""
   },
   {
     id: 178,
@@ -1978,7 +2157,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [179],
-    reading: "メビナ"
+    reading: "メビナ",
+    link: ""
   },
   {
     id: 179,
@@ -1989,7 +2169,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [178],
-    reading: "メビナ"
+    reading: "メビナ",
+    link: ""
   },
   {
     id: 180,
@@ -2000,7 +2181,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [],
-    reading: "ミニマハイブリッド"
+    reading: "ミニマハイブリッド",
+    link: ""
   },
   {
     id: 181,
@@ -2011,7 +2193,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [182, 183, 184],
-    reading: "モモタロウ"
+    reading: "モモタロウ",
+    link: "/graptosedum-francesco-baldi/"
   },
   {
     id: 182,
@@ -2022,7 +2205,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [181, 183, 184],
-    reading: "チワワリンゼ"
+    reading: "チワワリンゼ",
+    link: "/graptosedum-francesco-baldi/"
   },
   {
     id: 183,
@@ -2033,7 +2217,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [181, 182, 184],
-    reading: "ベアトリス"
+    reading: "ベアトリス",
+    link: "/graptosedum-francesco-baldi/"
   },
   {
     id: 184,
@@ -2044,7 +2229,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [181, 182, 183],
-    reading: "ベアトリーチェ"
+    reading: "ベアトリーチェ",
+    link: "/graptosedum-francesco-baldi/"
   },
   {
     id: 185,
@@ -2055,7 +2241,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [],
-    reading: "メラコ"
+    reading: "メラコ",
+    link: ""
   },
   {
     id: 186,
@@ -2066,7 +2253,8 @@ export const plants: Plant[] = [
     genus: "センペルビブム属",
     notes: "",
     relatedId: [187, 188, 189],
-    reading: "マキケン"
+    reading: "マキケン",
+    link: ""
   },
   {
     id: 187,
@@ -2077,7 +2265,8 @@ export const plants: Plant[] = [
     genus: "センペルビブム属",
     notes: "",
     relatedId: [186, 188, 189],
-    reading: "クモノスバンダイソウ"
+    reading: "クモノスバンダイソウ",
+    link: ""
   },
   {
     id: 188,
@@ -2088,7 +2277,8 @@ export const plants: Plant[] = [
     genus: "センペルビブム属",
     notes: "",
     relatedId: [186, 187, 189],
-    reading: "アラクノイデウム"
+    reading: "アラクノイデウム",
+    link: ""
   },
   {
     id: 189,
@@ -2099,7 +2289,8 @@ export const plants: Plant[] = [
     genus: "センペルビブム属",
     notes: "",
     relatedId: [186, 187, 188],
-    reading: "クモノスバンダイソウ"
+    reading: "クモノスバンダイソウ",
+    link: ""
   },
   {
     id: 190,
@@ -2110,7 +2301,8 @@ export const plants: Plant[] = [
     genus: "アプテニア属",
     notes: "",
     relatedId: [],
-    reading: "フイリベビーサンローズ"
+    reading: "フイリベビーサンローズ",
+    link: ""
   },
   {
     id: 191,
@@ -2121,7 +2313,8 @@ export const plants: Plant[] = [
     genus: "パキベリア属",
     notes: "",
     relatedId: [],
-    reading: "ロジャージョーンズ"
+    reading: "ロジャージョーンズ",
+    link: ""
   },
   {
     id: 192,
@@ -2132,7 +2325,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [],
-    reading: "ルシンダ"
+    reading: "ルシンダ",
+    link: ""
   },
   {
     id: 193,
@@ -2143,7 +2337,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [],
-    reading: "ヤマトノバラ"
+    reading: "ヤマトノバラ",
+    link: ""
   },
   {
     id: 194,
@@ -2154,7 +2349,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [195, 196, 197],
-    reading: "マッコス"
+    reading: "マッコス",
+    link: ""
   },
   {
     id: 195,
@@ -2165,7 +2361,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [194, 196, 197],
-    reading: "マルクス"
+    reading: "マルクス",
+    link: ""
   },
   {
     id: 196,
@@ -2176,7 +2373,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [194, 195, 197],
-    reading: "マルコス"
+    reading: "マルコス",
+    link: ""
   },
   {
     id: 197,
@@ -2187,7 +2385,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [194, 195, 196],
-    reading: "アーリーデイト"
+    reading: "アーリーデイト",
+    link: ""
   },
   {
     id: 198,
@@ -2198,7 +2397,8 @@ export const plants: Plant[] = [
     genus: "グラプトペタルム属",
     notes: "",
     relatedId: [199],
-    reading: "ビクターケーン"
+    reading: "ビクターケーン",
+    link: ""
   },
   {
     id: 199,
@@ -2209,7 +2409,8 @@ export const plants: Plant[] = [
     genus: "グラプトペタルム属",
     notes: "",
     relatedId: [198],
-    reading: "ハツオモイ"
+    reading: "ハツオモイ",
+    link: ""
   },
   {
     id: 200,
@@ -2220,7 +2421,8 @@ export const plants: Plant[] = [
     genus: "グラプトベリア属",
     notes: "",
     relatedId: [12, 13, 201],
-    reading: "バッシュフル"
+    reading: "バッシュフル",
+    link: ""
   },
   {
     id: 201,
@@ -2231,7 +2433,8 @@ export const plants: Plant[] = [
     genus: "グラプトベリア属",
     notes: "",
     relatedId: [12, 13, 200],
-    reading: "ジュジュベ"
+    reading: "ジュジュベ",
+    link: ""
   },
   {
     id: 202,
@@ -2242,7 +2445,8 @@ export const plants: Plant[] = [
     genus: "グラプトベリア属",
     notes: "",
     relatedId: [4, 203],
-    reading: "ギンコウレン"
+    reading: "ギンコウレン",
+    link: "/echeveria-battle-whitepeony-vs-lightice/"
   },
   {
     id: 203,
@@ -2253,7 +2457,8 @@ export const plants: Plant[] = [
     genus: "グラプトベリア属",
     notes: "",
     relatedId: [4, 202],
-    reading: "ヒメオボロヅキ"
+    reading: "ヒメオボロヅキ",
+    link: "/echeveria-battle-whitepeony-vs-lightice/"
   },
   {
     id: 204,
@@ -2264,7 +2469,8 @@ export const plants: Plant[] = [
     genus: "セダム属",
     notes: "",
     relatedId: [205, 206],
-    reading: "ハルモエ"
+    reading: "ハルモエ",
+    link: ""
   },
   {
     id: 205,
@@ -2275,7 +2481,8 @@ export const plants: Plant[] = [
     genus: "セダム属",
     notes: "",
     relatedId: [204, 206],
-    reading: "アリス"
+    reading: "アリス",
+    link: ""
   },
   {
     id: 206,
@@ -2286,7 +2493,8 @@ export const plants: Plant[] = [
     genus: "セダム属",
     notes: "",
     relatedId: [204, 205],
-    reading: "エヴァンス"
+    reading: "エヴァンス",
+    link: ""
   },
   {
     id: 207,
@@ -2297,7 +2505,8 @@ export const plants: Plant[] = [
     genus: "セデベリア属",
     notes: "",
     relatedId: [208, 209],
-    reading: "ジュヒョウ"
+    reading: "ジュヒョウ",
+    link: ""
   },
   {
     id: 208,
@@ -2308,7 +2517,8 @@ export const plants: Plant[] = [
     genus: "セデベリア属",
     notes: "",
     relatedId: [],
-    reading: "ソフトライム"
+    reading: "ソフトライム",
+    link: ""
   },
   {
     id: 209,
@@ -2319,7 +2529,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [],
-    reading: "パープルパール"
+    reading: "パープルパール",
+    link: ""
   },
   {
     id: 210,
@@ -2330,7 +2541,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [211, 212, 213, 214, 215],
-    reading: "ハムシー"
+    reading: "ハムシー",
+    link: ""
   },
   {
     id: 211,
@@ -2341,7 +2553,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [210, 212, 213, 214, 215],
-    reading: "ハナノツカサ"
+    reading: "ハナノツカサ",
+    link: ""
   },
   {
     id: 212,
@@ -2352,7 +2565,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [210, 211, 213, 214, 215],
-    reading: "ハルムシー"
+    reading: "ハルムシー",
+    link: ""
   },
   {
     id: 213,
@@ -2363,7 +2577,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [210, 211, 212, 214, 215],
-    reading: "ニシキノツカサ"
+    reading: "ニシキノツカサ",
+    link: ""
   },
   {
     id: 214,
@@ -2374,7 +2589,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [210, 211, 212, 213, 215],
-    reading: "ハナツカサ"
+    reading: "ハナツカサ",
+    link: ""
   },
   {
     id: 215,
@@ -2385,7 +2601,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [210, 211, 212, 213, 214],
-    reading: "ハームシー"
+    reading: "ハームシー",
+    link: ""
   },
   {
     id: 216,
@@ -2396,7 +2613,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [],
-    reading: "ベニツカサ"
+    reading: "ベニツカサ",
+    link: ""
   },
   {
     id: 217,
@@ -2407,7 +2625,8 @@ export const plants: Plant[] = [
     genus: "グラプトセダム属",
     notes: "",
     relatedId: [218, 219],
-    reading: "サクラボタン"
+    reading: "サクラボタン",
+    link: ""
   },
   {
     id: 218,
@@ -2418,7 +2637,8 @@ export const plants: Plant[] = [
     genus: "グラプトセダム属",
     notes: "",
     relatedId: [217, 219],
-    reading: "ゴースティ"
+    reading: "ゴースティ",
+    link: ""
   },
   {
     id: 219,
@@ -2429,7 +2649,8 @@ export const plants: Plant[] = [
     genus: "グラプトセダム属",
     notes: "",
     relatedId: [217, 218],
-    reading: "ゴースティン"
+    reading: "ゴースティン",
+    link: ""
   },
   {
     id: 220,
@@ -2440,7 +2661,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [],
-    reading: "ピンクプリティ"
+    reading: "ピンクプリティ",
+    link: ""
   },
   {
     id: 221,
@@ -2451,7 +2673,8 @@ export const plants: Plant[] = [
     genus: "クラッスラ属",
     notes: "",
     relatedId: [222],
-    reading: "ベニチゴ"
+    reading: "ベニチゴ",
+    link: ""
   },
   {
     id: 222,
@@ -2462,7 +2685,8 @@ export const plants: Plant[] = [
     genus: "クラッスラ属",
     notes: "",
     relatedId: [221],
-    reading: "ラディカンス"
+    reading: "ラディカンス",
+    link: ""
   },
   {
     id: 223,
@@ -2473,7 +2697,8 @@ export const plants: Plant[] = [
     genus: "クラッスラ属",
     notes: "",
     relatedId: [],
-    reading: "オウゴンカゲツ"
+    reading: "オウゴンカゲツ",
+    link: ""
   },
   {
     id: 224,
@@ -2484,7 +2709,8 @@ export const plants: Plant[] = [
     genus: "アエオニウム属",
     notes: "",
     relatedId: [],
-    reading: "レモネード"
+    reading: "レモネード",
+    link: ""
   },
   {
     id: 225,
@@ -2495,7 +2721,8 @@ export const plants: Plant[] = [
     genus: "アナカンプセロス属",
     notes: "",
     relatedId: [226, 227, 228],
-    reading: "サクラフブキ"
+    reading: "サクラフブキ",
+    link: "/sakura-fubuki-garden-tips/"
   },
   {
     id: 226,
@@ -2506,7 +2733,8 @@ export const plants: Plant[] = [
     genus: "アナカンプセロス属",
     notes: "",
     relatedId: [225, 227, 228],
-    reading: "フブキノマツ"
+    reading: "フブキノマツ",
+    link: "/sakura-fubuki-garden-tips/"
   },
   {
     id: 227,
@@ -2517,7 +2745,8 @@ export const plants: Plant[] = [
     genus: "アナカンプセロス属",
     notes: "",
     relatedId: [225, 226, 228],
-    reading: "フブキノマツニシキ"
+    reading: "フブキノマツニシキ",
+    link: "/sakura-fubuki-garden-tips/"
   },
   {
     id: 228,
@@ -2528,7 +2757,8 @@ export const plants: Plant[] = [
     genus: "アナカンプセロス属",
     notes: "",
     relatedId: [225, 226, 227],
-    reading: "ヒメフブキ"
+    reading: "ヒメフブキ",
+    link: "/sakura-fubuki-garden-tips/"
   },
   {
     id: 229,
@@ -2538,8 +2768,9 @@ export const plants: Plant[] = [
     family: "ベンケイソウ科",
     genus: "グラプトベリア属",
     notes: "",
-    relatedId: [230, 231],
-    reading: "ハクボタン"
+    relatedId: [230],
+    reading: "ハクボタン",
+    link: "/echeveria-battle-whitepeony-vs-lightice/"
   },
   {
     id: 230,
@@ -2549,8 +2780,9 @@ export const plants: Plant[] = [
     family: "ベンケイソウ科",
     genus: "グラプトベリア属",
     notes: "",
-    relatedId: [229, 231],
-    reading: "ティテュバンス"
+    relatedId: [229],
+    reading: "ティテュバンス",
+    link: "/echeveria-battle-whitepeony-vs-lightice/"
   },
   {
     id: 231,
@@ -2561,7 +2793,8 @@ export const plants: Plant[] = [
     genus: "エケベリア属",
     notes: "",
     relatedId: [21],
-    reading: "プロリフィラ"
+    reading: "プロリフィラ",
+    link: ""
   },
   {
     id: 232,
@@ -2572,7 +2805,8 @@ export const plants: Plant[] = [
     genus: "プレクトランサス属",
     notes: "",
     relatedId: [233, 234, 235],
-    reading: "アロマティカス"
+    reading: "アロマティカス",
+    link: ""
   },
   {
     id: 233,
@@ -2583,7 +2817,8 @@ export const plants: Plant[] = [
     genus: "プレクトランサス属",
     notes: "",
     relatedId: [232, 234, 235],
-    reading: "キューバンオレガノ"
+    reading: "キューバンオレガノ",
+    link: ""
   },
   {
     id: 234,
@@ -2594,7 +2829,8 @@ export const plants: Plant[] = [
     genus: "プレクトランサス属",
     notes: "",
     relatedId: [232, 233, 235],
-    reading: "アンボイニクス"
+    reading: "アンボイニクス",
+    link: ""
   },
   {
     id: 235,
@@ -2605,7 +2841,8 @@ export const plants: Plant[] = [
     genus: "プレクトランサス属",
     notes: "",
     relatedId: [232, 233, 234],
-    reading: "アロマチクス"
+    reading: "アロマチクス",
+    link: ""
   },
   {
     id: 236,
@@ -2616,7 +2853,8 @@ export const plants: Plant[] = [
     genus: "カランコエ属",
     notes: "",
     relatedId: [237],
-    reading: "コタカラソウ"
+    reading: "コタカラソウ",
+    link: "/kalanchoe-daigremontiana-care-guide/"
   },
   {
     id: 237,
@@ -2627,7 +2865,8 @@ export const plants: Plant[] = [
     genus: "カランコエ属",
     notes: "",
     relatedId: [236],
-    reading: "クロンコエ"
+    reading: "クロンコエ",
+    link: "/kalanchoe-daigremontiana-care-guide/"
   },
   {
     id: 238,
@@ -2638,40 +2877,44 @@ export const plants: Plant[] = [
     genus: "コチレドン属",
     notes: "",
     relatedId: [],
-    reading: "ペンデンス"
+    reading: "ペンデンス",
+    link: ""
   },
   {
     id: 240,
     name: "パールフォンニュルンベルグ",
     scientificName: "Echeveria 'Perle Von Nurnberg'",
-    fileName: "echeveria-perle-von-nurnberg",
+    fileName: "",
     family: "ベンケイソウ科",
     genus: "エケベリア属",
     notes: "",
     relatedId: [241, 242],
-    reading: "パールフォンニュルンベルグ"
+    reading: "パールフォンニュルンベルグ",
+    link: ""
   },
   {
     id: 241,
     name: "パール フォン ニュルンベルグ",
     scientificName: "Echeveria 'Perle Von Nurnberg'",
-    fileName: "echeveria-perle-von-nurnberg",
+    fileName: "",
     family: "ベンケイソウ科",
     genus: "エケベリア属",
     notes: "",
     relatedId: [240, 242],
-    reading: "パール フォン ニュルンベルグ"
+    reading: "パール フォン ニュルンベルグ",
+    link: ""
   },
   {
     id: 242,
     name: "ニュルンベルグの真珠",
     scientificName: "Echeveria 'Perle Von Nurnberg'",
-    fileName: "echeveria-perle-von-nurnberg",
+    fileName: "",
     family: "ベンケイソウ科",
     genus: "エケベリア属",
     notes: "",
     relatedId: [240, 241],
-    reading: "ニュルンベルグノシンジュ"
+    reading: "ニュルンベルグノシンジュ",
+    link: ""
   },
   {
     id: 243,
@@ -2682,7 +2925,8 @@ export const plants: Plant[] = [
     genus: "グラプトペタルム属",
     notes: "",
     relatedId: [],
-    reading: "ソウセイ"
+    reading: "ソウセイ",
+    link: ""
   },
   {
     id: 244,
@@ -2693,7 +2937,8 @@ export const plants: Plant[] = [
     genus: "セダム属",
     notes: "",
     relatedId: [245],
-    reading: "アドルフィ カッパー"
+    reading: "アドルフィ カッパー",
+    link: ""
   },
   {
     id: 245,
@@ -2704,6 +2949,585 @@ export const plants: Plant[] = [
     genus: "セダム属",
     notes: "",
     relatedId: [244],
-    reading: "アドルフィ コッパー"
+    reading: "アドルフィ コッパー",
+    link: ""
+  },
+  {
+    id: 246,
+    name: "銘月",
+    scientificName: "Sedum adolphi",
+    fileName: "sedum-adolphi",
+    family: "ベンケイソウ科",
+    genus: "セダム属",
+    notes: "",
+    relatedId: [247, 248, 249, 250],
+    reading: "メイゲツ",
+    link: "/sedum-adolphi-plant-profile/"
+  },
+  {
+    id: 247,
+    name: "アドルフィー",
+    scientificName: "Sedum adolphi",
+    fileName: "sedum-adolphi",
+    family: "ベンケイソウ科",
+    genus: "セダム属",
+    notes: "",
+    relatedId: [246, 248, 249, 250],
+    reading: "アドルフィー",
+    link: "/sedum-adolphi-plant-profile/"
+  },
+  {
+    id: 248,
+    name: "メイゲツ",
+    scientificName: "Sedum adolphi",
+    fileName: "sedum-adolphi",
+    family: "ベンケイソウ科",
+    genus: "セダム属",
+    notes: "",
+    relatedId: [246, 247, 249, 250],
+    reading: "メイゲツ",
+    link: "/sedum-adolphi-plant-profile/"
+  },
+  {
+    id: 249,
+    name: "名月",
+    scientificName: "Sedum adolphi",
+    fileName: "sedum-adolphi",
+    family: "ベンケイソウ科",
+    genus: "セダム属",
+    notes: "",
+    relatedId: [246, 247, 248, 250],
+    reading: "メイゲツ",
+    link: "/sedum-adolphi-plant-profile/"
+  },
+  {
+    id: 250,
+    name: "明月",
+    scientificName: "Sedum adolphi",
+    fileName: "sedum-adolphi",
+    family: "ベンケイソウ科",
+    genus: "セダム属",
+    notes: "",
+    relatedId: [246, 247, 248, 249],
+    reading: "メイゲツ",
+    link: "/sedum-adolphi-plant-profile/"
+  },
+  {
+    id: 251,
+    name: "メノマンネングサ",
+    scientificName: "Sedum japonicum",
+    fileName: "sedum-japonicum",
+    family: "ベンケイソウ科",
+    genus: "セダム属",
+    notes: "",
+    relatedId: [252, 253, 254],
+    reading: "メノマンネングサ",
+    link: "/sedum-lineare-male-perennial/"
+  },
+  {
+    id: 252,
+    name: "女の万年草",
+    scientificName: "Sedum japonicum",
+    fileName: "sedum-japonicum",
+    family: "ベンケイソウ科",
+    genus: "セダム属",
+    notes: "",
+    relatedId: [251, 253, 254],
+    reading: "オンナノマンネングサ",
+    link: "/sedum-lineare-male-perennial/"
+  },
+  {
+    id: 253,
+    name: "雌万年草",
+    scientificName: "Sedum japonicum",
+    fileName: "sedum-japonicum",
+    family: "ベンケイソウ科",
+    genus: "セダム属",
+    notes: "",
+    relatedId: [251, 252, 254],
+    reading: "メマンネングサ",
+    link: "/sedum-lineare-male-perennial/"
+  },
+  {
+    id: 254,
+    name: "磯千鳥",
+    scientificName: "Sedum japonicum",
+    fileName: "sedum-japonicum",
+    family: "ベンケイソウ科",
+    genus: "セダム属",
+    notes: "",
+    relatedId: [251, 252, 253],
+    reading: "イソチドリ",
+    link: "/sedum-lineare-male-perennial/"
+  },
+  {
+    id: 255,
+    name: "キャンプファイア",
+    scientificName: "Crassula capitella 'Camp Fire'",
+    fileName: "crassula-capitella-camp-fire",
+    family: "ベンケイソウ科",
+    genus: "クラッスラ属",
+    notes: "",
+    relatedId: [8],
+    reading: "キャンプファイア",
+    link: ""
+  },
+  {
+    id: 256,
+    name: "クーペリー",
+    scientificName: "Sedum cooperi",
+    fileName: "sedum-cooperi",
+    family: "ベンケイソウ科",
+    genus: "セダム属",
+    notes: "",
+    relatedId: [],
+    reading: "クーペリー",
+    link: ""
+  },
+  {
+    id: 257,
+    name: "ブロンズ姫",
+    scientificName: "Graptopetalum paraguayensis 'Bronz'",
+    fileName: "graptopetalum-paraguayensis-bronz",
+    family: "ベンケイソウ科",
+    genus: "グラプトペタルム属",
+    notes: "",
+    relatedId: [258, 259],
+    reading: "ブロンズヒメ",
+    link: ""
+  },
+  {
+    id: 258,
+    name: "ピーチ姫",
+    scientificName: "Graptopetalum paraguayensis 'Bronz'",
+    fileName: "graptopetalum-paraguayensis-bronz",
+    family: "ベンケイソウ科",
+    genus: "グラプトペタルム属",
+    notes: "",
+    relatedId: [257, 259],
+    reading: "ピーチヒメ",
+    link: ""
+  },
+  {
+    id: 259,
+    name: "姫朧月",
+    scientificName: "Graptopetalum paraguayensis 'Bronz'",
+    fileName: "graptopetalum-paraguayensis-bronz",
+    family: "ベンケイソウ科",
+    genus: "グラプトペタルム属",
+    notes: "",
+    relatedId: [257, 258],
+    reading: "ヒメオボロヅキ",
+    link: ""
+  },
+  {
+    id: 260,
+    name: "ルビーネックレス",
+    scientificName: "Othonna capensis 'Ruby Necklace'",
+    fileName: "othonna-capensis-ruby-necklace",
+    family: "キク科",
+    genus: "オトンナ属",
+    notes: "",
+    relatedId: [261, 262, 263, 264],
+    reading: "ルビーネックレス",
+    link: ""
+  },
+  {
+    id: 261,
+    name: "カペンシス",
+    scientificName: "Othonna capensis 'Ruby Necklace'",
+    fileName: "othonna-capensis-ruby-necklace",
+    family: "キク科",
+    genus: "オトンナ属",
+    notes: "",
+    relatedId: [260, 262, 263, 264],
+    reading: "カペンシス",
+    link: ""
+  },
+  {
+    id: 262,
+    name: "紫月",
+    scientificName: "Othonna capensis 'Ruby Necklace'",
+    fileName: "othonna-capensis-ruby-necklace",
+    family: "キク科",
+    genus: "オトンナ属",
+    notes: "",
+    relatedId: [260, 261, 263, 264],
+    reading: "シズキ",
+    link: ""
+  },
+  {
+    id: 263,
+    name: "パープルネックレス",
+    scientificName: "Othonna capensis 'Ruby Necklace'",
+    fileName: "othonna-capensis-ruby-necklace",
+    family: "キク科",
+    genus: "オトンナ属",
+    notes: "",
+    relatedId: [260, 261, 262, 264],
+    reading: "パープルネックレス",
+    link: ""
+  },
+  {
+    id: 264,
+    name: "黄花新月",
+    scientificName: "Othonna capensis 'Ruby Necklace'",
+    fileName: "othonna-capensis-ruby-necklace",
+    family: "キク科",
+    genus: "オトンナ属",
+    notes: "",
+    relatedId: [260, 261, 262, 263],
+    reading: "キバナシンゲツ",
+    link: ""
+  },
+  {
+    id: 265,
+    name: "ピーチネックレス",
+    scientificName: "Senecio 'Peach Necklace'",
+    fileName: "senecio-peach-necklace",
+    family: "キク科",
+    genus: "セネシオ属",
+    notes: "",
+    relatedId: [],
+    reading: "ピーチネックレス",
+    link: "/greenneck-peachneck/"
+  },
+  {
+    id: 266,
+    name: "赫麗",
+    scientificName: "Crassula corymbosa",
+    fileName: "crassula-corymbosa",
+    family: "ベンケイソウ科",
+    genus: "クラッスラ属",
+    notes: "",
+    relatedId: [267, 268],
+    reading: "カクレイ",
+    link: ""
+  },
+  {
+    id: 267,
+    name: "カクレイ",
+    scientificName: "Crassula corymbosa",
+    fileName: "crassula-corymbosa",
+    family: "ベンケイソウ科",
+    genus: "クラッスラ属",
+    notes: "",
+    relatedId: [266, 268],
+    reading: "カクレイ",
+    link: ""
+  },
+  {
+    id: 268,
+    name: "喜楽天",
+    scientificName: "Crassula corymbosa",
+    fileName: "crassula-corymbosa",
+    family: "ベンケイソウ科",
+    genus: "クラッスラ属",
+    notes: "",
+    relatedId: [266, 267],
+    reading: "キラクテン",
+    link: ""
+  },
+  {
+    id: 269,
+    name: "胡蝶の舞",
+    scientificName: "Kalanchoe laxiflora",
+    fileName: "kalanchoe-laxiflora",
+    family: "ベンケイソウ科",
+    genus: "カランコエ属",
+    notes: "",
+    relatedId: [270, 271],
+    reading: "コチョウノマイ",
+    link: ""
+  },
+  {
+    id: 270,
+    name: "鋸歯子持葉",
+    scientificName: "Kalanchoe laxiflora",
+    fileName: "kalanchoe-laxiflora",
+    family: "ベンケイソウ科",
+    genus: "カランコエ属",
+    notes: "",
+    relatedId: [269, 271],
+    reading: "キョウシコモチバ",
+    link: ""
+  },
+  {
+    id: 271,
+    name: "ラクシフローラ",
+    scientificName: "Kalanchoe laxiflora",
+    fileName: "kalanchoe-laxiflora",
+    family: "ベンケイソウ科",
+    genus: "カランコエ属",
+    notes: "",
+    relatedId: [269, 270],
+    reading: "ラクシフローラ",
+    link: ""
+  },
+  {
+    id: 272,
+    name: "デザートローズ",
+    scientificName: "Kalanchoe luciae",
+    fileName: "kalanchoe-luciae",
+    family: "ベンケイソウ科",
+    genus: "カランコエ属",
+    notes: "",
+    relatedId: [273, 274],
+    reading: "デザートローズ",
+    link: ""
+  },
+  {
+    id: 273,
+    name: "紅唐印",
+    scientificName: "Kalanchoe luciae",
+    fileName: "kalanchoe-luciae",
+    family: "ベンケイソウ科",
+    genus: "カランコエ属",
+    notes: "",
+    relatedId: [272, 274],
+    reading: "ベニトウイン",
+    link: ""
+  },
+  {
+    id: 274,
+    name: "ルキア",
+    scientificName: "Kalanchoe luciae",
+    fileName: "kalanchoe-luciae",
+    family: "ベンケイソウ科",
+    genus: "カランコエ属",
+    notes: "",
+    relatedId: [272, 273],
+    reading: "ルキア",
+    link: ""
+  },
+  {
+    id: 275,
+    name: "エンジェルティアーズ",
+    scientificName: "Senecio herreanus f.variegata",
+    fileName: "senecio-herreanus-variegata",
+    family: "キク科",
+    genus: "セネシオ属",
+    notes: "",
+    relatedId: [276, 277],
+    reading: "エンジェルティアーズ",
+    link: ""
+  },
+  {
+    id: 276,
+    name: "大弦月城錦",
+    scientificName: "Senecio herreanus f.variegata",
+    fileName: "senecio-herreanus-variegata",
+    family: "キク科",
+    genus: "セネシオ属",
+    notes: "",
+    relatedId: [275, 277],
+    reading: "オオゲンゲツジョウニシキ",
+    link: ""
+  },
+  {
+    id: 277,
+    name: "エンゼルティアーズ",
+    scientificName: "Senecio herreanus f.variegata",
+    fileName: "senecio-herreanus-variegata",
+    family: "キク科",
+    genus: "セネシオ属",
+    notes: "",
+    relatedId: [275, 276],
+    reading: "エンゼルティアーズ",
+    link: ""
+  },
+  {
+    id: 278,
+    name: "",
+    scientificName: "",
+    fileName: "",
+    family: "",
+    genus: "",
+    notes: "",
+    relatedId: [],
+    reading: "",
+    link: ""
+  },
+  {
+    id: 279,
+    name: "",
+    scientificName: "",
+    fileName: "",
+    family: "",
+    genus: "",
+    notes: "",
+    relatedId: [],
+    reading: "",
+    link: ""
+  },
+  {
+    id: 280,
+    name: "グリーンネックレス",
+    scientificName: "Senecio rowleyanus",
+    fileName: "senecio-rowleyanus",
+    family: "キク科",
+    genus: "セネシオ属",
+    notes: "",
+    relatedId: [281, 282, 283, 284],
+    reading: "グリーンネックレス",
+    link: "/greenneck-peachneck/"
+  },
+  {
+    id: 281,
+    name: "緑の鈴",
+    scientificName: "Senecio rowleyanus",
+    fileName: "senecio-rowleyanus",
+    family: "キク科",
+    genus: "セネシオ属",
+    notes: "",
+    relatedId: [280, 282, 283, 284],
+    reading: "ミドリノスズ",
+    link: "/greenneck-peachneck/"
+  },
+  {
+    id: 282,
+    name: "ミドリノスズ",
+    scientificName: "Senecio rowleyanus",
+    fileName: "senecio-rowleyanus",
+    family: "キク科",
+    genus: "セネシオ属",
+    notes: "",
+    relatedId: [280, 281, 283, 284],
+    reading: "ミドリノスズ",
+    link: "/greenneck-peachneck/"
+  },
+  {
+    id: 283,
+    name: "緑の玉",
+    scientificName: "Senecio rowleyanus",
+    fileName: "senecio-rowleyanus",
+    family: "キク科",
+    genus: "セネシオ属",
+    notes: "",
+    relatedId: [280, 281, 282, 284],
+    reading: "ミドリノタマ",
+    link: "/greenneck-peachneck/"
+  },
+  {
+    id: 284,
+    name: "翠玉簪",
+    scientificName: "Senecio rowleyanus",
+    fileName: "senecio-rowleyanus",
+    family: "キク科",
+    genus: "セネシオ属",
+    notes: "",
+    relatedId: [280, 281, 282, 283],
+    reading: "スイギョクカンザシ",
+    link: "/greenneck-peachneck/"
+  },
+  {
+    id: 285,
+    name: "サポナリア",
+    scientificName: "Aloe saponaria",
+    fileName: "aloe-saponaria",
+    family: "キジカクシ科ツルボラン亜科",
+    genus: "アロエ属",
+    notes: "",
+    relatedId: [286],
+    reading: "サポナリア",
+    link: ""
+  },
+  {
+    id: 286,
+    name: "明鱗錦",
+    scientificName: "Aloe saponaria",
+    fileName: "aloe-saponaria",
+    family: "キジカクシ科ツルボラン亜科",
+    genus: "アロエ属",
+    notes: "",
+    relatedId: [285],
+    reading: "メイリンニシキ",
+    link: ""
+  },
+  {
+    id: 287,
+    name: "",
+    scientificName: "",
+    fileName: "",
+    family: "",
+    genus: "",
+    notes: "",
+    relatedId: [],
+    reading: "",
+    link: ""
+  },
+  {
+    id: 288,
+    name: "",
+    scientificName: "",
+    fileName: "",
+    family: "",
+    genus: "",
+    notes: "",
+    relatedId: [],
+    reading: "",
+    link: ""
+  },
+  {
+    id: 289,
+    name: "ファング",
+    scientificName: "Kalanchoe behalensis 'Fang'",
+    fileName: "kalanchoe-behalensis-fang",
+    family: "ベンケイソウ科",
+    genus: "カランコエ属",
+    notes: "",
+    relatedId: [290, 291],
+    reading: "ファング",
+    link: ""
+  },
+  {
+    id: 290,
+    name: "ベハレンシス・ファング",
+    scientificName: "Kalanchoe behalensis 'Fang'",
+    fileName: "kalanchoe-behalensis-fang",
+    family: "ベンケイソウ科",
+    genus: "カランコエ属",
+    notes: "",
+    relatedId: [289, 291],
+    reading: "ベハレンシス・ファング",
+    link: ""
+  },
+  {
+    id: 291,
+    name: "ファーグ",
+    scientificName: "Kalanchoe behalensis 'Fang'",
+    fileName: "kalanchoe-behalensis-fang",
+    family: "ベンケイソウ科",
+    genus: "カランコエ属",
+    notes: "",
+    relatedId: [289, 290],
+    reading: "ファーグ",
+    link: ""
+  },
+  {
+    id: 292,
+    name: "月兎耳",
+    scientificName: "Kalanchoe tomentosa",
+    fileName: "kalanchoe-tomentosa",
+    family: "ベンケイソウ科",
+    genus: "カランコエ属",
+    notes: "",
+    relatedId: [],
+    reading: "ツキトジ",
+    link: ""
+  },
+  {
+    id: 293,
+    name: "不死鳥",
+    scientificName: "Kalanchoe 'Fusityou'",
+    fileName: "kalanchoe-fusityou",
+    family: "ベンケイソウ科",
+    genus: "カランコエ属",
+    notes: "",
+    relatedId: [],
+    reading: "フシチョウ",
+    link: "/phoenix-garden/"
   },
 ];
+
+export default plants;

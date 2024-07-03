@@ -79,8 +79,6 @@ export default function Home() {
       plantToUpdate.cutType = newCuttingType;
       plantToUpdate.hasLabel = newHasLabel;
       if (isCombined) {
-        console.log("updatedPlantData!!!");
-        console.log(updatedPlantData);
         setCombinedPlantData(updatedPlantData);
       } else {
         setPlantData(updatedPlantData);
@@ -159,10 +157,8 @@ export default function Home() {
         }
         newSectionData.push(newRow);
       }
-
       sortedData[sectionKey] = newSectionData;
     }
-
     setPlantData(sortedData);
   };
 
@@ -216,7 +212,7 @@ export default function Home() {
 
     const updatedData = {
       ...dataToUpdate,
-      [newSectionKey]: newSectionData,
+      [`${newSectionKey}-${potType}`]: newSectionData,
     };
 
     if (collectionName === "combinedPlantCollection") {
@@ -316,13 +312,11 @@ export default function Home() {
                 return aNum.localeCompare(bNum);
               })
               .map(([sectionName, sectionData]) => {
-                const sectionParts = sectionName.split("-");
-                const potType = parseInt(
-                  sectionParts[sectionParts.length - 1],
-                  10
-                );
-
                 const maxCols = getMaxCols(sectionData);
+                const potTypeStr =
+                  sectionData[0][0].uniqueId?.split("-").pop() ?? "0";
+                const potType = parseInt(potTypeStr, 10);
+
                 return (
                   <CombinedPlantSectionWrapper
                     key={sectionName}
@@ -349,7 +343,9 @@ export default function Home() {
                           ) =>
                             handleUpdatePlantData(
                               parseInt(
-                                sectionName.replace("combinedSection", ""),
+                                sectionName
+                                  .split("-")[0]
+                                  .replace("combinedSection", ""),
                                 10
                               ),
                               rowIndex,

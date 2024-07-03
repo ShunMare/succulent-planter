@@ -36,7 +36,7 @@ const Plant: React.FC<PlantProps> = ({
         </div>
       )}
       {hasLabel && (
-        <div className="absolute bottom-clamp-0.5vw right-clamp-0.5vw bg-white rounded-full h-4 w-4 border border-black"></div>
+        <div className="absolute bottom-clamp-0.5vw right-clamp-0.5vw bg-white rounded-full h-clamp-3.5vw w-clamp-3.5vw border border-black"></div>
       )}
     </div>
   );
