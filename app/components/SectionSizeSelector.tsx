@@ -29,6 +29,9 @@ const potTypeOptions = [
   { value: 12, label: "黒いポット" },
   { value: 13, label: "茶色いエッジの細い鉢" },
   { value: 14, label: "木箱の鉢" },
+  { value: 15, label: "オレンジ色のポット" },
+  { value: 16, label: "シンプルな黒いプランター" },
+  { value: 17, label: "黒いプランター" },
 ];
 
 const SectionSizeSelector: React.FC<SectionSizeSelectorProps> = ({

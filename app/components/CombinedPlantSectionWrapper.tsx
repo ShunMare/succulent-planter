@@ -14,6 +14,9 @@ import ThickGreenEdgePot from "@/app/components/PlantPot/ThickGreenEdgePot";
 import ThinBrownEdgePot from "@/app/components/PlantPot/ThinBrownEdgePot";
 import WoodenBoxPot from "@/app/components/PlantPot/WoodenBoxPot";
 import SimpleBlackPot from "@/app/components/PlantPot/SimpleBlackPot";
+import SimpleOrangePot from "@/app/components/PlantPot/SimpleOrangePot";
+import BlackPlanter from "@/app/components/PlantPot/BlackPlanter";
+import SimpleBlackPlanter from "@/app/components/PlantPot/SimpleBlackPlanter";
 
 interface SectionWrapperProps {
   children: React.ReactNode;
@@ -53,13 +56,25 @@ const CombinedPlantSectionWrapper: React.FC<SectionWrapperProps> = ({
       case 10:
         return <SquareBrickPot maxCols={maxCols}>{children}</SquareBrickPot>;
       case 11:
-        return <ThickGreenEdgePot maxCols={maxCols}>{children}</ThickGreenEdgePot>;
+        return (
+          <ThickGreenEdgePot maxCols={maxCols}>{children}</ThickGreenEdgePot>
+        );
       case 12:
         return <SimpleBlackPot maxCols={maxCols}>{children}</SimpleBlackPot>;
       case 13:
-        return <ThinBrownEdgePot maxCols={maxCols}>{children}</ThinBrownEdgePot>;
+        return (
+          <ThinBrownEdgePot maxCols={maxCols}>{children}</ThinBrownEdgePot>
+        );
       case 14:
         return <WoodenBoxPot maxCols={maxCols}>{children}</WoodenBoxPot>;
+      case 15:
+        return <SimpleOrangePot maxCols={maxCols}>{children}</SimpleOrangePot>;
+      case 16:
+        return (
+          <SimpleBlackPlanter maxCols={maxCols}>{children}</SimpleBlackPlanter>
+        );
+      case 17:
+        return <BlackPlanter maxCols={maxCols}>{children}</BlackPlanter>;
       default:
         return <SimpleBlackPot maxCols={maxCols}>{children}</SimpleBlackPot>;
     }
