@@ -29,6 +29,8 @@ export default function Home() {
   const [planterType, setPlanterType] = useState("苗植え");
   const [potType, setPotType] = useState(0);
 
+  const showButtons = process.env.SHOW_BUTTONS === "true";
+
   useEffect(() => {
     const useLocalData = process.env.USE_LOCAL_DATA === "true";
 
@@ -228,29 +230,31 @@ export default function Home() {
     <>
       <main className="bg-[#FBE3DE] flex justify-center">
         <div className="pt-clamp-15vh pb-clamp-20vh max-w-[768px] w-full px-clamp-2vw">
-          <div className="flex justify-end space-x-4">
-            <Button
-              bgColor="#fdf2a0"
-              defaultText="編集する"
-              changedText="更新する"
-              isActive={isEditing}
-              onClick={() => setIsEditing(!isEditing)}
-            />
-            <Button
-              bgColor="#add8e6"
-              defaultText="並べ替え"
-              changedText="並べ替え中"
-              isActive={isSorted}
-              onClick={handleSortButtonClick}
-            />
-            <Button
-              bgColor="#90EE90"
-              defaultText="プランター"
-              changedText="追加中"
-              isActive={false}
-              onClick={() => setIsModalOpen(true)}
-            />
-          </div>
+          {showButtons && (
+            <div className="flex justify-end space-x-4">
+              <Button
+                bgColor="#fdf2a0"
+                defaultText="編集する"
+                changedText="更新する"
+                isActive={isEditing}
+                onClick={() => setIsEditing(!isEditing)}
+              />
+              <Button
+                bgColor="#add8e6"
+                defaultText="並べ替え"
+                changedText="並べ替え中"
+                isActive={isSorted}
+                onClick={handleSortButtonClick}
+              />
+              <Button
+                bgColor="#90EE90"
+                defaultText="プランター"
+                changedText="追加中"
+                isActive={false}
+                onClick={() => setIsModalOpen(true)}
+              />
+            </div>
+          )}
           {Object.entries(plantData)
             .sort((a, b) => {
               const aNum = a[0].replace("section", "").padStart(2, "0");

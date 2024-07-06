@@ -11,6 +11,7 @@ const nextConfig = {
     APP_ID: process.env.APP_ID,
     MEASUREMENT_ID: process.env.MEASUREMENT_ID,
     USE_LOCAL_DATA: process.env.USE_LOCAL_DATA,
+    SHOW_BUTTONS: process.env.SHOW_BUTTONS,
   },
 };
 

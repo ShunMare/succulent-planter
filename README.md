@@ -38,3 +38,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ```bash
 node generateConfig.js
 ```
+
+```bash
+SHOW_BUTTONS=false npm run build
+```
