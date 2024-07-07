@@ -229,7 +229,7 @@ export default function Home() {
 
   return (
     <>
-      <main className="bg-[#FBE3DE] flex justify-center">
+      <main className="bg-[#FBE3DE] flex justify-center overflow-x-hidden">
         <div className="pt-clamp-15vh pb-clamp-20vh max-w-[768px] w-full px-clamp-2vw">
           {showButtons && (
             <div className="flex justify-end space-x-4">
@@ -303,7 +303,7 @@ export default function Home() {
                 </NurseryPlantSectionWrapper>
               );
             })}
-          <div className="grid grid-cols-2 gap-clamp-1vw">
+          <div className="grid grid-cols-2 gap-x-clamp-0.1vw gap-y-clamp-3vw">
             {Object.entries(combinedPlantData)
               .sort((a, b) => {
                 const aNum = a[0]
@@ -317,8 +317,6 @@ export default function Home() {
                 return aNum.localeCompare(bNum);
               })
               .map(([sectionName, sectionData]) => {
-                console.log("sectionName:", sectionName); // データをログに出力
-
                 const maxCols = getMaxCols(sectionData);
                 const potTypeStr =
                   sectionData[0][0].uniqueId?.split("-").pop() ?? "0";
