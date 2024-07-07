@@ -46,6 +46,7 @@ export default function Home() {
         setPlantData(plantCollectionData);
         setCombinedPlantData(combinedPlantCollectionData);
         setOriginalPlantData(plantCollectionData);
+        console.log("Combined Plant Data:", combinedPlantCollectionData); // データをコンソールに出力
       } else {
         setPlantData(localPlantData);
         setOriginalPlantData(localPlantData);
@@ -214,7 +215,7 @@ export default function Home() {
 
     const updatedData = {
       ...dataToUpdate,
-      [`${newSectionKey}-${potType}`]: newSectionData,
+      [`${newSectionKey}`]: newSectionData,
     };
 
     if (collectionName === "combinedPlantCollection") {
@@ -316,6 +317,8 @@ export default function Home() {
                 return aNum.localeCompare(bNum);
               })
               .map(([sectionName, sectionData]) => {
+                console.log("sectionName:", sectionName); // データをログに出力
+
                 const maxCols = getMaxCols(sectionData);
                 const potTypeStr =
                   sectionData[0][0].uniqueId?.split("-").pop() ?? "0";
