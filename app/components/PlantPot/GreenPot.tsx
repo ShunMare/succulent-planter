@@ -1,4 +1,4 @@
-import ResponsivePicture from "@/app/ResponsivePicture";
+import ResponsivePicture from "@/app/responsivePicture";
 import React from "react";
 
 interface GreenPotProps {

@@ -1,5 +1,5 @@
 import React from "react";
-import ResponsivePicture from "@/app/ResponsivePicture";
+import ResponsivePicture from "@/app/responsivePicture";
 
 interface PlantProps {
   className?: string;

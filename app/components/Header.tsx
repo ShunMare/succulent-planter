@@ -1,10 +1,8 @@
 import React from "react";
 import getConfig from "next/config";
 
-const { publicRuntimeConfig } = getConfig();
-
 const Header: React.FC = () => {
-  const showButtons = publicRuntimeConfig.SHOW_BUTTONS === "true";
+  const showButtons = process.env.SHOW_BUTTONS === "true";
 
   return (
     <>

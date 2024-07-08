@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { plants } from "@/constants/plantDatabase";
-import ResponsivePicture from "@/app/ResponsivePicture";
+import ResponsivePicture from "@/app/responsivePicture";
 
 interface Props {
   name: string;
