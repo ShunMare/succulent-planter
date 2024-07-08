@@ -16,6 +16,7 @@ import { plantData as localPlantData } from "@/data/plantData";
 import { db, auth, login } from "@/libs/firestore/firebase";
 import NurseryPlantSectionWrapper from "@/app/components/NurseryPlantSectionWrapper";
 import CombinedPlantSectionWrapper from "@/app/components/CombinedPlantSectionWrapper";
+import ScrollToTopButton from "@/app/components/ScrollToTopButton";
 
 export default function Home() {
   const [isEditing, setIsEditing] = useState(false);
@@ -46,7 +47,6 @@ export default function Home() {
         setPlantData(plantCollectionData);
         setCombinedPlantData(combinedPlantCollectionData);
         setOriginalPlantData(plantCollectionData);
-        console.log("Combined Plant Data:", combinedPlantCollectionData); // データをコンソールに出力
       } else {
         setPlantData(localPlantData);
         setOriginalPlantData(localPlantData);
@@ -229,8 +229,8 @@ export default function Home() {
 
   return (
     <>
-      <main className="bg-[#FBE3DE] flex justify-center overflow-x-hidden">
-        <div className="pt-clamp-15vh pb-clamp-20vh max-w-[768px] w-full px-clamp-2vw">
+      <main className="bg-[#FBE3DE] flex justify-center overflow-x-hidden pt-clamp-15vw">
+        <div className="pt-clamp-8vh pb-clamp-20vh max-w-[768px] w-full px-clamp-2vw">
           {showButtons && (
             <div className="flex justify-end space-x-4">
               <Button
@@ -303,7 +303,7 @@ export default function Home() {
                 </NurseryPlantSectionWrapper>
               );
             })}
-          <div className="grid grid-cols-2 gap-x-clamp-0.1vw gap-y-clamp-3vw">
+          <div className="grid grid-cols-2 gap-x-clamp-2vw gap-y-clamp-7vw">
             {Object.entries(combinedPlantData)
               .sort((a, b) => {
                 const aNum = a[0]
@@ -385,6 +385,7 @@ export default function Home() {
           onCancel={() => setIsModalOpen(false)}
         />
       </Modal>
+      <ScrollToTopButton />
     </>
   );
 }

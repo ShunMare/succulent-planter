@@ -44,8 +44,7 @@ const PlantWithToolTip: React.FC<PlantWithToolTipProps> = ({
     return `${year}.${month}.${day}`;
   };
 
-  const imgSrc =
-    plantId !== 0 ? `/assets/images/succulent/${plant.fileName}.png` : "";
+  const imgSrc = plantId !== 0 ? `/assets/images/succulent/${plant.fileName}` : "";
   const altText = plantId !== 0 ? plant.name : "";
 
   const handlePlantClick = () => {

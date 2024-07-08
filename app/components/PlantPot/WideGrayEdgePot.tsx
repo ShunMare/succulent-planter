@@ -1,3 +1,4 @@
+import ResponsivePicture from "@/app/ResponsivePicture";
 import React from "react";
 
 interface WideGrayEdgePotProps {
@@ -14,7 +15,7 @@ const WideGrayEdgePot: React.FC<WideGrayEdgePotProps> = ({ children, maxCols }) 
       }}
     >
       <div className="absolute top-1/2 left-1/2 -translate-x-[51%] -translate-y-[50%] w-[150%] aspect-square">
-        <img className="w-full" src="/assets/images/pot/wideGrayEdgePot.png" alt="グレーのエッジの広い鉢" />
+        <ResponsivePicture className="w-full" src="/assets/images/pot/wideGrayEdgePot" alt="グレーのエッジの広い鉢" />
       </div>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[93%] aspect-square bg-cover bg-soil rounded-full"></div>
       {children}

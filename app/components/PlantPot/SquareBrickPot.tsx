@@ -1,3 +1,4 @@
+import ResponsivePicture from "@/app/ResponsivePicture";
 import React from "react";
 
 interface SquareBrickPotProps {
@@ -14,7 +15,7 @@ const SquareBrickPot: React.FC<SquareBrickPotProps> = ({ children, maxCols }) =>
       }}
     >
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[51%] w-[200%] aspect-square">
-        <img className="w-full" src="/assets/images/pot/squareBrickPot.png" alt="四角いレンガの鉢" />
+        <ResponsivePicture className="w-full" src="/assets/images/pot/squareBrickPot" alt="四角いレンガの鉢" />
       </div>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[93%] aspect-square bg-cover bg-soil rounded-full"></div>
       {children}

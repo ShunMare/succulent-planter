@@ -1,3 +1,4 @@
+import ResponsivePicture from "@/app/ResponsivePicture";
 import React from "react";
 
 interface BlackPlasticPotProps {
@@ -14,7 +15,7 @@ const BlackPlasticPot: React.FC<BlackPlasticPotProps> = ({ children, maxCols }) 
       }}
     >
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[195%] aspect-square">
-        <img className="w-full" src="/assets/images/pot/blackPlasticPot.png" alt="プラスチックの黒いポット" />
+        <ResponsivePicture className="w-full" src="/assets/images/pot/blackPlasticPot" alt="プラスチックの黒いポット" />
       </div>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[93%] aspect-square bg-cover bg-soil rounded-clamp-2vw"></div>
       {children}

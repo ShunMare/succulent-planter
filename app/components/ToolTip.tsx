@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { plants } from "@/constants/plantDatabase";
+import ResponsivePicture from "@/app/ResponsivePicture";
 
 interface Props {
   name: string;
@@ -49,7 +50,7 @@ const ToolTip: React.FC<Props> = ({
       const windowCenter = window.innerHeight / 2;
 
       if (containerRect.left > window.innerWidth / 2) {
-      if (containerCenter < windowCenter && spaceBelow > spaceAbove) {
+        if (containerCenter < windowCenter && spaceBelow > spaceAbove) {
           setPosition("bottom-left");
         } else {
           setPosition("top-left");
@@ -109,7 +110,7 @@ const ToolTip: React.FC<Props> = ({
           </div>
         )}
         <div className="rounded-clamp-1vw overflow-hidden my-clamp-1vh">
-          <img className="w-full" src={imgSrc} alt={alt} />
+          <ResponsivePicture className="w-full" src={imgSrc} alt={alt} />
         </div>
         <p className="text-clamp-2.5vw">
           {family} {genus}

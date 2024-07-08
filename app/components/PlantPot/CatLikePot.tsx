@@ -1,3 +1,4 @@
+import ResponsivePicture from "@/app/ResponsivePicture";
 import React from "react";
 
 interface CatLikePotProps {
@@ -14,7 +15,7 @@ const CatLikePot: React.FC<CatLikePotProps> = ({ children, maxCols }) => {
       }}
     >
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[165%] aspect-square">
-        <img className="w-full" src="/assets/images/pot/catLikePot.png" alt="猫すっき" />
+        <ResponsivePicture className="w-full" src="/assets/images/pot/catLikePot" alt="猫すっき" />
       </div>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[93%] aspect-square bg-cover bg-soil rounded-full"></div>
       {children}

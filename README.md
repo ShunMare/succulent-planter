@@ -36,9 +36,11 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
 ```bash
-node generateConfig.js
+node generateConfig.mjs
 ```
 
+## convert to webp
+
 ```bash
-SHOW_BUTTONS=false npm run build
+python convert_to_webp_folder.py
 ```

@@ -44077,12 +44077,9 @@ export default {
       "colors": {
         "primary": "#33dad0",
         "secondary": "#8ec7cf",
-        "bg-primary": "#292e2f",
+        "bg-primary": "#33dad0",
         "font-primary": "#ffffff",
-        "font-secondary": "#292e2f",
-        "gray": "#55615e",
-        "cat": "#C3C3C3",
-        "editor-frame": "#1e1e1e"
+        "font-secondary": "#292e2f"
       },
       "backgroundImage": {
         "gradient-secondary-40": "linear-gradient(to right, #8ec7cf 40%, transparent 0)"

@@ -20,7 +20,7 @@ export default function RootLayout({
         imgURL={"/assets/og-image.png"}
         siteURL={"https://taniku.blog/planter/"}
       />
-      <body className={""}>
+      <body className="relative">
         <Header />
         {children}
         <Footer />

@@ -1,3 +1,4 @@
+import ResponsivePicture from "@/app/ResponsivePicture";
 import React from "react";
 
 interface WavyEdgeWhitePotProps {
@@ -14,7 +15,7 @@ const WavyEdgeWhitePot: React.FC<WavyEdgeWhitePotProps> = ({ children, maxCols }
       }}
     >
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[143%] aspect-square">
-        <img className="w-full" src="/assets/images/pot/wavyEdgeWhitePot.png" alt="波打ったエッジの白い鉢" />
+        <ResponsivePicture className="w-full" src="/assets/images/pot/wavyEdgeWhitePot" alt="波打ったエッジの白い鉢" />
       </div>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[93%] aspect-square bg-cover bg-soil rounded-full"></div>
       {children}

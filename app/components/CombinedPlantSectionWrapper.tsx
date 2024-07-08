@@ -107,7 +107,7 @@ const CombinedPlantSectionWrapper: React.FC<SectionWrapperProps> = ({
   };
 
   return (
-    <div className="flex justify-center mt-clamp-4vh">{renderPotType()}</div>
+    <div className="flex justify-center items-center">{renderPotType()}</div>
   );
 };
 

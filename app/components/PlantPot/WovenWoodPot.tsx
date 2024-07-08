@@ -1,3 +1,4 @@
+import ResponsivePicture from "@/app/ResponsivePicture";
 import React from "react";
 
 interface WovenWoodPotProps {
@@ -14,7 +15,7 @@ const WovenWoodPot: React.FC<WovenWoodPotProps> = ({ children, maxCols }) => {
       }}
     >
       <div className="absolute top-1/2 left-1/2 -translate-x-[52%] -translate-y-[52.5%] w-[150%] aspect-square">
-        <img className="w-full" src="/assets/images/pot/wovenWoodPot.png" alt="木で編み込まれたつくられた鉢" />
+        <ResponsivePicture className="w-full" src="/assets/images/pot/wovenWoodPot" alt="木で編み込まれたつくられた鉢" />
       </div>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[93%] aspect-square bg-cover bg-soil rounded-full"></div>
       {children}

@@ -1,3 +1,4 @@
+import ResponsivePicture from "@/app/ResponsivePicture";
 import React from "react";
 
 interface RectangleWhitePotProps {
@@ -14,7 +15,7 @@ const RectangleWhitePot: React.FC<RectangleWhitePotProps> = ({ children, maxCols
       }}
     >
       <div className="absolute top-1/2 left-1/2 -translate-x-[51%] -translate-y-[49%] w-[150%] aspect-square">
-        <img className="w-full" src="/assets/images/pot/rectangleWhitePot.png" alt="四角い白いポット" />
+        <ResponsivePicture className="w-full" src="/assets/images/pot/rectangleWhitePot" alt="四角い白いポット" />
       </div>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[93%] aspect-square bg-cover bg-soil"></div>
       {children}

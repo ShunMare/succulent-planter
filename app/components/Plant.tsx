@@ -1,4 +1,5 @@
 import React from "react";
+import ResponsivePicture from "@/app/ResponsivePicture";
 
 interface PlantProps {
   className?: string;
@@ -27,7 +28,9 @@ const Plant: React.FC<PlantProps> = ({
       className={`relative rounded-clamp-2vw aspect-square bg-cover ${bgClass} ${borderClass} ${className}`}
     >
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] brightness-105 contrast-125">
-        {imgSrc && <img className="w-full" src={imgSrc} alt={alt} />}
+        {imgSrc && (
+          <ResponsivePicture className="w-full" src={imgSrc} alt={alt} />
+        )}
       </div>
       {isEditing && (
         <div className="absolute top-0 left-0 aspect-square rounded-full w-full bg-black z-10 bg-opacity-50">
