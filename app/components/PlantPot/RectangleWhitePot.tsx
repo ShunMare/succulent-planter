@@ -14,7 +14,7 @@ const RectangleWhitePot: React.FC<RectangleWhitePotProps> = ({ children, maxCols
         gridTemplateColumns: `repeat(${maxCols}, minmax(0, 1fr))`,
       }}
     >
-      <div className="absolute top-1/2 left-1/2 -translate-x-[51%] -translate-y-[49%] w-[150%] aspect-square">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[113%] aspect-square">
         <ResponsivePicture className="w-full" src="/assets/images/pot/rectangleWhitePot" alt="四角い白いポット" />
       </div>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[93%] aspect-square bg-cover bg-soil"></div>

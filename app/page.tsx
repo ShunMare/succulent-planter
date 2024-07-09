@@ -303,7 +303,7 @@ export default function Home() {
                 </NurseryPlantSectionWrapper>
               );
             })}
-          <div className="grid grid-cols-2 gap-x-clamp-2vw gap-y-clamp-7vw">
+          <div className="grid grid-cols-2 gap-x-clamp-2vw gap-y-clamp-7vw mt-clamp-5vh">
             {Object.entries(combinedPlantData)
               .sort((a, b) => {
                 const aNum = a[0]

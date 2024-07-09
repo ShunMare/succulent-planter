@@ -14,7 +14,7 @@ const RectangleOrangePot: React.FC<RectangleOrangePotProps> = ({ children, maxCo
         gridTemplateColumns: `repeat(${maxCols}, minmax(0, 1fr))`,
       }}
     >
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[220%] aspect-square">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] aspect-square">
         <ResponsivePicture className="w-full" src="/assets/images/pot/rectangleOrangePot" alt="四角形のオレンジの鉢" />
       </div>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[93%] aspect-square bg-cover bg-soil"></div>
