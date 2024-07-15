@@ -44,3 +44,7 @@ node generateConfig.mjs
 ```bash
 python convert_to_webp_folder.py
 ```
+
+```bash
+npm install next-seo
+```
